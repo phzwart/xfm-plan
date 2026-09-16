@@ -1,0 +1,256 @@
+# Execution trace of the pistachio multimodal XRF+FTIR analysis, as an aims-leaf Dataset,
+# with plan_step / plan_variable links into xfm-gold 0.2.1 (sciplan PlanGraph "xfm" 0.2.0-gold).
+# Every value is from the manuscript (V5) or SMAK 3.0.11 source; fields not stated are omitted, not guessed.
+id: lambdaber:pistachio-multimodal-v5
+title: Pistachio stem salinity response — pixel-registered XRF + FTIR (manuscript V5)
+description: Execution trace reconstructed from Richardson et al. manuscript V5 for validation against the xfm plan graph.
+keywords: [XRF, FTIR, pistachio, salinity, multimodal, SMAK]
+
+studies:
+  - id: lambdaber:study-pistachio-salinity
+    title: Salinity stress response mechanisms in pistachio rootstock UCB-1
+    keywords: [salinity, ion compartmentalization, UCB-1]
+
+instruments:
+  - id: lambdaber:inst-ssrl-bl14-3
+    title: SSRL beamline 14-3
+    instrument_code: SSRL-BL14-3
+    manufacturer: SSRL / Stanford Synchrotron Radiation Lightsource
+    model: bending-magnet XRF microprobe, Si(111) DCM, SIGRAY axially symmetric optics, 7-element Hitachi Vortex SDD + Xspress3
+    current_status: operational
+  - id: lambdaber:inst-als-1-4-3
+    title: ALS beamline 1.4.3
+    instrument_code: ALS-BL1.4.3
+    manufacturer: Advanced Light Source
+    model: synchrotron FTIR spectromicroscope
+    current_status: operational
+
+samples:
+  - id: lambdaber:sam-control
+    title: pistachio UCB-1 stem cross-section, control
+    sample_code: PIST-CTRL
+    sample_type: tissue_section
+  - id: lambdaber:sam-salinity
+    title: pistachio UCB-1 stem cross-section, salinity treatment
+    sample_code: PIST-SAL
+    sample_type: tissue_section
+
+experiment_runs:
+  - id: lambdaber:exp-xrf-bl14-3
+    title: XRF mapping at SSRL BL14-3
+    experiment_code: PIST-XRF-BL14-3
+    technique: xray_microprobe
+    description: "Maps collected at 4200 eV, 5 um beam spot, 10 um step, 50 ms dwell; He-purged chamber; detector at 45 degrees to sample."
+  - id: lambdaber:exp-ftir-als
+    title: FTIR spectromicroscopy at ALS 1.4.3
+    experiment_code: PIST-FTIR-ALS-1.4.3
+    technique: ftir_imaging
+    description: "IR spot 2-10 um; 10 um step; detector at 90 degrees to sample."
+
+# ---- DataFiles: one per DataState instance actually produced (both samples aggregated per state)
+data_files:
+  - {id: lambdaber:f-mca,          file_name: xrf_mca_spectra,        file_format: hdf5,  plan_variable: "xfm:ds/mca_spectrum"}
+  - {id: lambdaber:f-fitted,       file_name: xrf_fitted_maps,        file_format: hdf5,  plan_variable: "xfm:ds/fitted_area_map"}
+  - {id: lambdaber:f-smoothed,     file_name: xrf_blur_maps,          file_format: hdf5,  plan_variable: "xfm:ds/smoothed_map"}
+  - {id: lambdaber:f-scaled,       file_name: xrf_scaled_maps,        file_format: hdf5,  plan_variable: "xfm:ds/scaled_map"}
+  - {id: lambdaber:f-optical,      file_name: beamline_optical,       file_format: tiff,  plan_variable: "xfm:ds/optical_image"}
+  - {id: lambdaber:f-optical-xrf,  file_name: optical_on_xrf_grid,    file_format: hdf5,  plan_variable: "xfm:ds/optical_on_xrf_grid"}
+  - {id: lambdaber:f-ftir-raw,     file_name: ftir_envi_export,       file_format: hdf5,  plan_variable: "xfm:ds/ftir_spectrum"}
+  - {id: lambdaber:f-ftir-atm,     file_name: ftir_atm_corrected,     file_format: hdf5,  plan_variable: "xfm:ds/ftir_atm"}
+  - {id: lambdaber:f-ftir-sg,      file_name: ftir_denoised,          file_format: hdf5,  plan_variable: "xfm:ds/ftir_denoised"}
+  - {id: lambdaber:f-ftir-bl,      file_name: ftir_baselined,         file_format: hdf5,  plan_variable: "xfm:ds/ftir_baselined"}
+  - {id: lambdaber:f-ftir-pre,     file_name: ftir_normalized,        file_format: hdf5,  plan_variable: "xfm:ds/ftir_spectrum_pre"}
+  - {id: lambdaber:f-ftir-bands,   file_name: ftir_band_maps,         file_format: hdf5,  plan_variable: "xfm:ds/ftir_band_map"}
+  - {id: lambdaber:f-registered,   file_name: multimodal_registered,  file_format: hdf5,  plan_variable: "xfm:ds/registered_stack"}
+  - {id: lambdaber:f-fa-scores,    file_name: fa_component_scores,    file_format: hdf5,  plan_variable: "xfm:ds/fa_scores"}
+  - {id: lambdaber:f-fa-loadings,  file_name: fa_loadings,            file_format: csv,   plan_variable: "xfm:ds/fa_loadings"}
+  - {id: lambdaber:f-claims,       file_name: statistics_export,      file_format: csv,   plan_variable: "xfm:ds/claim_colocalization"}
+
+# ---- WorkflowRuns: one per as-run step; plan_step links to the Transformation executed
+workflow_runs:
+  - id: lambdaber:wf-01-fit
+    workflow_code: PIST-01-PYMCA-FIT
+    workflow_type: xrf_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    additional_software: PyMca5 (FastXRFLinearFit)
+    processing_parameters: "fixed zero/gain/noise/fano per activePyMCAConfig.cfg; SNIP width 50"
+    plan_step: "xfm:t/spectrum_fit"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/snip_width", value: "50", deviates_from_default: false}
+  - id: lambdaber:wf-02-blur
+    workflow_code: PIST-02-GAUSS-BLUR
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "Gaussian 5x5, sigma 0.75"
+    plan_step: "xfm:t/gaussian_smoothing"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/blur_size", value: "5", deviates_from_default: false}
+      - {parameter: "xfm:p/blur_sigma", value: "0.75", deviates_from_default: true}
+  - id: lambdaber:wf-03-scale
+    workflow_code: PIST-03-GROUP-SCALE
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "Ca,K to same total; 10x Cl,S,P; 10x Al,Mg"
+    plan_step: "xfm:t/group_scaling"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-04-stitch
+    workflow_code: PIST-04-OPTICAL-STITCH
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "feature-detection stitching (not coordinate-based)"
+    plan_step: "xfm:t/optical_stitch"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-05-resize
+    workflow_code: PIST-05-OPTICAL-RESIZE
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    plan_step: "xfm:t/optical_resize"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-06-ftir-atm
+    workflow_code: PIST-06-FTIR-ATM
+    workflow_type: ftir_analysis
+    software_name: Omnic
+    software_version: "9.8"
+    additional_software: SMAK 3.0.11 (IR_MathClass; which of the two applied the correction is not stated)
+    plan_step: "xfm:t/ftir_atmospheric_correction"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-07-ftir-sg
+    workflow_code: PIST-07-FTIR-SG
+    workflow_type: ftir_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "Savitzky-Golay window 9, order 3"
+    plan_step: "xfm:t/ftir_sg_denoise"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/sg_window", value: "9"}
+      - {parameter: "xfm:p/sg_order", value: "3"}
+  - id: lambdaber:wf-08-ftir-bl
+    workflow_code: PIST-08-FTIR-RUBBERBAND
+    workflow_type: ftir_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "rubberband (convex hull) baseline, identical for every pixel"
+    plan_step: "xfm:t/ftir_rubberband_baseline"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-09-ftir-norm
+    workflow_code: PIST-09-FTIR-MEANNORM
+    workflow_type: ftir_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "mean normalization at 1655 cm-1; repeated at 2900 cm-1 as check"
+    plan_step: "xfm:t/ftir_mean_normalization"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/norm_wavenumber", value: "1655"}
+  - id: lambdaber:wf-09v-ftir-norm-check
+    workflow_code: PIST-09V-FTIR-MEANNORM-2900
+    workflow_type: ftir_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    description: validation re-run of normalization at an alternative wavenumber
+    plan_step: "xfm:t/ftir_mean_normalization"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/norm_wavenumber", value: "2900"}
+  - id: lambdaber:wf-10-ftir-bins
+    workflow_code: PIST-10-FTIR-BANDS
+    workflow_type: ftir_analysis
+    software_name: SMAK
+    software_version: "3.0.11"
+    plan_step: "xfm:t/ftir_band_binning"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-11-register
+    workflow_code: PIST-11-MANUAL-REGISTRATION
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "manual landmarks, up to 35 markers; repeated with different marker sets; RMSE 11 px, 8 px after removing sheared markers"
+    plan_step: "xfm:t/manual_registration"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+    plan_parameter_values:
+      - {parameter: "xfm:p/n_markers", value: "up to 35"}
+  - id: lambdaber:wf-12-fa
+    workflow_code: PIST-12-MULTIFILE-FA
+    workflow_type: image_processing
+    software_name: SMAK
+    software_version: "3.0.11"
+    processing_parameters: "multifile weighted FA, auto-balanced groups, 20 components"
+    plan_step: "xfm:t/multifile_weighted_fa"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-13-stats
+    workflow_code: PIST-13-EFFECT-STATS
+    workflow_type: image_processing
+    software_name: custom Python
+    software_version: "Python 3.13.5, NumPy 2.3.2, SciPy 1.15.3"
+    processing_parameters: "variance ratio; Cohen's d"
+    plan_step: "xfm:t/component_effect_statistics"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+  - id: lambdaber:wf-14-corr
+    workflow_code: PIST-14-CHANNEL-CORR
+    workflow_type: image_processing
+    software_name: custom Python
+    software_version: "NumPy 2.3.2"
+    processing_parameters: "Pearson r per channel-component pair"
+    plan_step: "xfm:t/channel_component_correlation"
+    plan_graph: "xfm:plangraph/0.2.0-gold"
+
+study_experiment_associations:
+  - {study_id: lambdaber:study-pistachio-salinity, experiment_id: lambdaber:exp-xrf-bl14-3}
+  - {study_id: lambdaber:study-pistachio-salinity, experiment_id: lambdaber:exp-ftir-als}
+experiment_sample_associations:
+  - {experiment_id: lambdaber:exp-xrf-bl14-3, sample_id: lambdaber:sam-control, role: target}
+  - {experiment_id: lambdaber:exp-xrf-bl14-3, sample_id: lambdaber:sam-salinity, role: target}
+  - {experiment_id: lambdaber:exp-ftir-als, sample_id: lambdaber:sam-control, role: target}
+  - {experiment_id: lambdaber:exp-ftir-als, sample_id: lambdaber:sam-salinity, role: target}
+experiment_instrument_associations:
+  - {experiment_id: lambdaber:exp-xrf-bl14-3, instrument_id: lambdaber:inst-ssrl-bl14-3, role: primary}
+  - {experiment_id: lambdaber:exp-ftir-als, instrument_id: lambdaber:inst-als-1-4-3, role: primary}
+workflow_experiment_associations:
+  - {workflow_id: lambdaber:wf-01-fit, experiment_id: lambdaber:exp-xrf-bl14-3}
+  - {workflow_id: lambdaber:wf-06-ftir-atm, experiment_id: lambdaber:exp-ftir-als}
+
+# ---- data flow: which files each run consumed and produced
+workflow_input_associations:
+  - {workflow_id: lambdaber:wf-01-fit,        file_id: lambdaber:f-mca}
+  - {workflow_id: lambdaber:wf-02-blur,       file_id: lambdaber:f-fitted}
+  - {workflow_id: lambdaber:wf-03-scale,      file_id: lambdaber:f-smoothed}
+  - {workflow_id: lambdaber:wf-04-stitch,     file_id: lambdaber:f-optical}
+  - {workflow_id: lambdaber:wf-05-resize,     file_id: lambdaber:f-optical}
+  - {workflow_id: lambdaber:wf-06-ftir-atm,   file_id: lambdaber:f-ftir-raw}
+  - {workflow_id: lambdaber:wf-07-ftir-sg,    file_id: lambdaber:f-ftir-atm}
+  - {workflow_id: lambdaber:wf-08-ftir-bl,    file_id: lambdaber:f-ftir-sg}
+  - {workflow_id: lambdaber:wf-09-ftir-norm,  file_id: lambdaber:f-ftir-bl}
+  - {workflow_id: lambdaber:wf-09v-ftir-norm-check, file_id: lambdaber:f-ftir-bl}
+  - {workflow_id: lambdaber:wf-10-ftir-bins,  file_id: lambdaber:f-ftir-pre}
+  - {workflow_id: lambdaber:wf-11-register,   file_id: lambdaber:f-optical-xrf}
+  - {workflow_id: lambdaber:wf-11-register,   file_id: lambdaber:f-ftir-bands}
+  - {workflow_id: lambdaber:wf-11-register,   file_id: lambdaber:f-scaled}
+  - {workflow_id: lambdaber:wf-12-fa,         file_id: lambdaber:f-registered}
+  - {workflow_id: lambdaber:wf-13-stats,      file_id: lambdaber:f-fa-scores}
+  - {workflow_id: lambdaber:wf-14-corr,       file_id: lambdaber:f-fa-scores}
+  - {workflow_id: lambdaber:wf-14-corr,       file_id: lambdaber:f-registered}
+workflow_output_associations:
+  - {workflow_id: lambdaber:wf-01-fit,        file_id: lambdaber:f-fitted}
+  - {workflow_id: lambdaber:wf-02-blur,       file_id: lambdaber:f-smoothed}
+  - {workflow_id: lambdaber:wf-03-scale,      file_id: lambdaber:f-scaled}
+  - {workflow_id: lambdaber:wf-04-stitch,     file_id: lambdaber:f-optical}
+  - {workflow_id: lambdaber:wf-05-resize,     file_id: lambdaber:f-optical-xrf}
+  - {workflow_id: lambdaber:wf-06-ftir-atm,   file_id: lambdaber:f-ftir-atm}
+  - {workflow_id: lambdaber:wf-07-ftir-sg,    file_id: lambdaber:f-ftir-sg}
+  - {workflow_id: lambdaber:wf-08-ftir-bl,    file_id: lambdaber:f-ftir-bl}
+  - {workflow_id: lambdaber:wf-09-ftir-norm,  file_id: lambdaber:f-ftir-pre}
+  - {workflow_id: lambdaber:wf-09v-ftir-norm-check, file_id: lambdaber:f-ftir-pre}
+  - {workflow_id: lambdaber:wf-10-ftir-bins,  file_id: lambdaber:f-ftir-bands}
+  - {workflow_id: lambdaber:wf-11-register,   file_id: lambdaber:f-registered}
+  - {workflow_id: lambdaber:wf-12-fa,         file_id: lambdaber:f-fa-scores}
+  - {workflow_id: lambdaber:wf-12-fa,         file_id: lambdaber:f-fa-loadings}
+  - {workflow_id: lambdaber:wf-13-stats,      file_id: lambdaber:f-claims}
+  - {workflow_id: lambdaber:wf-14-corr,       file_id: lambdaber:f-claims}

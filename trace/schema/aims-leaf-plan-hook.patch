@@ -1,0 +1,57 @@
+--- ../aims-leaf/src/aims_leaf_schema/schema/aims_leaf_ber_schema.yaml	2026-09-16 00:43:26.600926344 +0000
++++ aims_leaf_ber_schema.yaml	2026-09-16 05:26:58.730860690 +0000
+@@ -114,6 +114,8 @@
+   skos: http://www.w3.org/2004/02/skos/core#
+   rdfs: http://www.w3.org/2000/01/rdf-schema#
+   prov: http://www.w3.org/ns/prov#
++  pplan: http://purl.org/net/p-plan#
++  sciplan: https://phzwart.github.io/sciplan/ns#
+   sio: http://semanticscience.org/resource/
+   nmdc: https://w3id.org/nmdc/
+   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+@@ -1009,8 +1011,34 @@
+         description: "Parameters used in processing"
+       parameters_file_path:
+         description: "Path to parameters file or text of key parameters"
++      plan_step:
++        description: "IRI of the type-level Transformation (sciplan) this run executes. Links execution to the field's plan graph."
++        range: uriorcurie
++        slot_uri: pplan:correspondsToStep
++      plan_graph:
++        description: "IRI or CURIE of the sciplan PlanGraph (with version) that plan_step refers to."
++        range: uriorcurie
++      plan_parameter_values:
++        description: "Typed parameter values keyed by sciplan Parameter IRI; the machine-readable counterpart of processing_parameters."
++        range: PlanParameterValue
++        multivalued: true
++        inlined_as_list: true
+ 
+ 
++  PlanParameterValue:
++    is_a: AttributeGroup
++    description: "One parameter value used in a workflow run, keyed by the sciplan Parameter it instantiates."
++    attributes:
++      parameter:
++        description: "sciplan Parameter IRI"
++        range: uriorcurie
++        required: true
++      value:
++        description: "Value as used, as a string"
++        required: true
++      deviates_from_default:
++        range: boolean
++
+   DataFile:
+     is_a: NamedThing
+     description: "A data file generated or used in the study"
+@@ -1046,6 +1074,10 @@
+       file_role:
+         description: "Role of the file (raw, intermediate, final, diagnostic, metadata)"
+         range: string
++      plan_variable:
++        description: "IRI of the type-level DataState (sciplan) this file instantiates."
++        range: uriorcurie
++        slot_uri: pplan:correspondsToVariable
+ 
+   Image:
+     is_a: NamedThing

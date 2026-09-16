@@ -1,0 +1,6 @@
+plan xfm 0.2.0-gold workflow xfm:w/pistachio_multimodal | trace lambdaber:pistachio-multimodal-v5: 15 runs, 16 files
+
+40 checks passed
+
+INFO (1)
+   plan step s2 (deadtime_correction, conditional, option=apply) has no run — expected absence

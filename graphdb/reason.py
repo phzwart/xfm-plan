@@ -30,18 +30,18 @@ class Plan:
     def routes(self, target, have, facts, depth=0, seen=None):
         """Enumerate ways to obtain DataState `target`. Returns list of route dicts."""
         seen = seen or set()
-        if target in have: return [dict(steps=[], blocked=[], decisions=[], unlock=[])]
+        if target in have: return [dict(steps=[], blocked=[], decisions=[], unlock=[], human=[])]
         if target in seen or depth > 25: return []
         out = []
         for tid in self.producers.get(target, []):
             t = self.T[tid]
             # each input must be obtainable (conjunction) — take first feasible route per input, but record all blockers
-            sub_steps, sub_blocked, sub_dec, sub_unlock, feasible = [], [], [], [], True
+            sub_steps, sub_blocked, sub_dec, sub_unlock, sub_human, feasible = [], [], [], [], [], True
             for inp in t["consumes"]:
                 rs = self.routes(inp, have, facts, depth + 1, seen | {target})
                 if not rs: feasible = False; sub_blocked.append(f"no way to obtain {self.s(inp)}"); continue
                 best = min(rs, key=lambda r: (len(r["blocked"]), len(r["steps"])))
-                sub_steps += best["steps"]; sub_blocked += best["blocked"]; sub_dec += best["decisions"]; sub_unlock += best["unlock"]
+                sub_steps += best["steps"]; sub_blocked += best["blocked"]; sub_dec += best["decisions"]; sub_unlock += best["unlock"]; sub_human += best.get("human", [])
             # this transformation's own assumptions against the facts
             for a in t.get("assumes", []):
                 if facts.get(a) is False:
@@ -56,14 +56,23 @@ class Plan:
                     sub_unlock.append(f"confirm {self.s(a)} ({self.idx[a]['about']}; {self.idx[a].get('confirmable_by') or 'no confirmation route stated'}) for {self.s(tid)}")
             for pid in t.get("parameters", []):
                 pd = self.idx[pid]
-                if pd.get("kind") == "physical" and pd.get("default_value") is None and facts.get(pid) is not True:
-                    sub_blocked.append(f"{self.s(tid)} needs physical parameter {self.s(pid)} ({pd.get('physical_meaning','')}), not available")
+                if pd.get("default_value") is None and facts.get(pid) is not True:
+                    if pd.get("kind") == "physical":
+                        sub_blocked.append(f"{self.s(tid)} needs physical parameter {self.s(pid)} ({pd.get('physical_meaning','')}), not available")
+                    else:
+                        scope = pd.get("default_scope")
+                        sub_human.append(f"{self.s(tid)}: choose {self.s(pid)} ({pd.get('kind')}; no default" + (f"; prior use: {scope}" if scope else "") + ")")
+                elif pd.get("set_by") == "decision" and facts.get(pid) is not True:
+                    sub_human.append(f"{self.s(tid)}: {self.s(pid)} is set by decision {self.s(pd.get('set_by_decision',''))}")
             for pre in t.get("requires", []):
                 p = self.idx[pre]
                 if facts.get(pre) is False: sub_blocked.append(f"{self.s(tid)} requires {self.s(pre)} ({p['checkable_by']}), which is false here")
                 elif pre not in facts and not p.get("established_by"): sub_unlock.append(f"check {self.s(pre)} from {p['checkable_by']} for {self.s(tid)}")
             if tid in self.decision_for: sub_dec.append((self.s(self.decision_for[tid][0]), self.decision_for[tid][1]))
-            out.append(dict(steps=sub_steps + [tid], blocked=sub_blocked, decisions=sorted(set(sub_dec)), unlock=sorted(set(sub_unlock))))
+            for d in [self.decision_for[tid]] if tid in self.decision_for else []:
+                dn = self.idx[d[0]]
+                if dn.get("requires_human"): sub_human.append(f"decision {self.s(d[0])} ('{d[1]}'): {dn['question']}" + (f" — rule: {dn['resolved_by']}" if dn.get("resolved_by") else " — no stated rule"))
+            out.append(dict(steps=sub_steps + [tid], blocked=sub_blocked, decisions=sorted(set(sub_dec)), unlock=sorted(set(sub_unlock)), human=sorted(set(sub_human))))
         return out
 
     def plan(self, goal, have, facts):
@@ -81,6 +90,8 @@ def show(P, title, goal, have, facts):
     for i, r in enumerate(feasible, 1):
         print(f"  route {i} (yields {P.s(r['satisfies'])}): " + " -> ".join(P.s(x) for x in dict.fromkeys(r["steps"])))
         if r["decisions"]: print("     decisions to take:", r["decisions"])
+        if r.get("human"):
+            print("     HUMAN INPUT REQUIRED:"); [print("       *", h) for h in r["human"]]
         if r["unlock"]:
             print("     still unverified (route valid only if these hold):"); [print("       -", u) for u in r["unlock"]]
         t_last = P.T[r["steps"][-1]]

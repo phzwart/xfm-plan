@@ -12,6 +12,8 @@ S2  Same sample, but composition, density and thickness are now known
   goal: absolute_concentration | have: ['mca_spectrum'] | facts: {'infinitely_thin': False, 'secondary_negligible': True, 'sample_composition': True, 'standard_measured': True, 'i0_recorded': True}
   route 1 (yields mass_fraction_map): spectrum_fit -> quant_fp
      decisions to take: [('fit_vs_roi', 'fit'), ('quantify', 'fundamental parameters')]
+     HUMAN INPUT REQUIRED:
+       * decision quantify ('fundamental parameters'): Is an absolute concentration needed, and is the sample thin enough (or its matrix known enough) to quantify? — no stated rule
      still unverified (route valid only if these hold):
        - confirm auger_neglected (physics; no confirmation route stated) for spectrum_fit
        - confirm escape_geometry (instrument; no confirmation route stated) for spectrum_fit
@@ -36,12 +38,26 @@ S4  Co-localization with all three inputs; detector known linear; sample rotated
   goal: colocalization | have: ['mca_spectrum', 'ftir_spectrum', 'optical_image'] | facts: {'detector_linear': True, 'translation_only': False, 'gaussian_response': True, 'escape_geometry': True, 'auger_neglected': True, 'fixed_peak_shape': True}
   route 1 (yields claim_colocalization): optical_resize -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> spectrum_fit -> gaussian_smoothing -> group_scaling -> manual_registration -> multifile_weighted_fa -> component_effect_statistics
      decisions to take: [('fit_vs_roi', 'fit'), ('registration_mode', 'manual')]
+     HUMAN INPUT REQUIRED:
+       * decision registration_mode ('manual'): Do rotation or detector-geometry distortions between modalities exceed what automatic alignment corrects? — no stated rule
+       * ftir_mean_normalization: choose norm_wavenumber (empirical; no default)
+       * ftir_sg_denoise: choose sg_order (numerical; no default; prior use: pistachio V5 (3))
+       * ftir_sg_denoise: choose sg_window (numerical; no default; prior use: pistachio V5 (9))
+       * manual_registration: choose n_markers (numerical; no default; prior use: pistachio V5 (up to 35))
+       * multifile_weighted_fa: choose fa_weighting (numerical; no default)
      still unverified (route valid only if these hold):
        - confirm shared_loadings (model; no confirmation route stated) for multifile_weighted_fa
        - confirm variance_is_chemistry (statistics; no confirmation route stated) for multifile_weighted_fa
      validate by: ['registration_rmse']
   route 2 (yields claim_colocalization): optical_resize -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> spectrum_fit -> gaussian_smoothing -> group_scaling -> manual_registration -> multifile_weighted_fa -> channel_component_correlation
      decisions to take: [('fit_vs_roi', 'fit'), ('registration_mode', 'manual')]
+     HUMAN INPUT REQUIRED:
+       * decision registration_mode ('manual'): Do rotation or detector-geometry distortions between modalities exceed what automatic alignment corrects? — no stated rule
+       * ftir_mean_normalization: choose norm_wavenumber (empirical; no default)
+       * ftir_sg_denoise: choose sg_order (numerical; no default; prior use: pistachio V5 (3))
+       * ftir_sg_denoise: choose sg_window (numerical; no default; prior use: pistachio V5 (9))
+       * manual_registration: choose n_markers (numerical; no default; prior use: pistachio V5 (up to 35))
+       * multifile_weighted_fa: choose fa_weighting (numerical; no default)
      still unverified (route valid only if these hold):
        - confirm shared_loadings (model; no confirmation route stated) for multifile_weighted_fa
        - confirm variance_is_chemistry (statistics; no confirmation route stated) for multifile_weighted_fa

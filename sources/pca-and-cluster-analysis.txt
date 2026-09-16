@@ -1,0 +1,10 @@
+# Text extraction of https://www.sams-xrays.com/pca-and-cluster-analysis, retrieved 2026-09-16 via fetch-and-extract (raw HTML not retrievable from build host). Re-hash from raw HTML at registration.
+The goal of PCA is to identify those areas of your sample that exhibit the most variation in their signal.
+The assumption here is that the areas that exhibit the greatest variation in signal are the areas that are chemically distinct.
+The new basis is superior because each axis (orthogonal vector) lies along the direction in which there is the greatest amount of variation within the measurements.
+pm with lower eigenvalues arise from noise.
+W and H are constrained to be non-negative, hence the term "NMF"
+Importantly, since k < m, WH only represents a good approximation of X if the basis vectors of W represent the most important chemical constituents of X, that is, if they serve as appropriate chemical endmembers.
+If too few endmembers are chosen (i.e., too low a value of k is chosen), then not all points in the data set will be adequately described (i.e. not all data points will lie within the simplex).
+However, as more endmembers are chosen, the endmembers will start to share characteristics; they will not signify unique chemical species.
+In any case, the choice of k matters for the analysis and it is wise to attempt the same SiVM calculation with a few different values of k.

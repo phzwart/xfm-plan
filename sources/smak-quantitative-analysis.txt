@@ -1,0 +1,17 @@
+# Text extraction of https://www.sams-xrays.com/smak-quantitative-analysis, retrieved 2026-09-16 via fetch-and-extract (raw HTML not retrievable from build host). Re-hash from raw HTML at registration.
+The MicroAnalysis Toolkit assumes that you sample is infinitely thin (for now) and make NO thickness corrections.
+Thus, this procedure is really only semi-quantitative.
+Additionally, the absorption and resultant yield for the sample will be different at various excitation energies, so a calibration measurement at 8keV will be different than one at 12keV.
+Additionally, the air path between the sample and the detector will affect the amount of fluorescence observed.
+If you change detector distances, the calibration measurements will no longer be valid.
+Most important is the matrix effects of the sample.
+If the tissue is thick, then you may need to worry about how much of the excitation x-rays enter the sample (i.e. the penetration depth) and then, how much of the fluorescence x-rays actually escape the sample.
+This issues also stress the importance of having a well defined thickness for your sample if you want to do true quantification.
+Do a calibration for each detector distance.
+Make careful note of the I0 ion chamber gains (particularly if you change the gains).
+The quantification process will normalize the data to I0 so you will not have to make this correction later.
+Lastly there is a dropdown menu to select the gain on the I0 ion chamber during the measurement.
+This is critical if you change the gains throughout the experiment.
+If you do not change the gains, then this field is NOT important (but should be set to the same value for all your standards and samples!).
+Each standard is a thin film support with an element of interest deposited on a Mylar film at approximately 50 micrograms per square cm.
+Std Conc = 47.1 ug/cm2.

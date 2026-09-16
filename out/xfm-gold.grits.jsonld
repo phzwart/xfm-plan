@@ -1,0 +1,2277 @@
+{
+ "@context": "https://phzwart.github.io/pygrits/context.jsonld",
+ "@graph": [
+  {
+   "@id": "plan:xfm-gold-0.1.0",
+   "@type": "prov:Plan",
+   "name": "xfm gold graph build",
+   "prompt_digest": "b35dbed4dcedf50694091845d21b3c00a6269ff390af4997497b8c8e9e2bdfa2",
+   "schema_digest": "7b570432ddcf9dee2ebcea8ad811b4c572ce1654762dced5503d5d40d07fbef5",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)"
+  },
+  {
+   "@id": "q:sole-roi-fast",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "This technique is fast and simple. However, in presence of heavily overlapping peaks, it is impossible to separate the different element contributions to the spectrum in this way."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-gaussian",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The response function of most solid-state detectors is predominantly Gaussian."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-global-params",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The non-linear least-squares fit optimizes ZERO, GAIN, NOISE and FANO for the entire fitting region, thus for all peaks simultaneously."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-60params",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "It is highly unlikely that such a non-linear least-squares fit will terminate successfully at the global minimum."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-merge-10ev",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The program default threshold to consider two transitions as two terms in (5) is 10 eV."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-escape",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "PyMCA assumes normal incidence to the detector and considers escape only from the front surface."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-auger-crude",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "very crude, it is satisfactory because when the L X-ray energies are of practical interest, the radiative transitions to the K shell largely"
+    }
+   }
+  },
+  {
+   "@id": "q:sole-edge-validation",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The similarity of Fig. 2C and D proves the reliability of the fit, all over the map, despite the interfering presence of lead."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-secondary",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Influence of secondary f luorescence excitation is neglected in all these calculations and should be estimated with standards or evaluated by Monte Carlo methods."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-fp-unknowns",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "the only unknown terms to calculate the mass concentrations are the incident photon flux and the detector efficiency."
+    }
+   }
+  },
+  {
+   "@id": "q:sole-parallel-beam",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "sha256": "d1970affab6d33989cef823ad2e1798b71c2d31c12c44a3d700f2e8db6c7691d",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1016/j.sab.2006.12.002",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "If a sample composition is given, the P program uses a parallel beam approximation"
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-i0",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "corrected for the intensity of the incident beam (i.e. I0 ). This is useful for comparing relative levels between samples but does not provide an absolute measure of elemental concentration in the specimen."
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-fit-overlap",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "While peak fitting is not strictly required for elements with well-resolved X-fray fluorescence peaks, important salient features of the underlying data can be grossly misrepresented when significant overlap occurs"
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-kkb-caka",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "leads to a significant number of K Kβ photons also being counted due to overlap of these signals"
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-std-same-scan",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "using the same scan parameters as employed for primary data acquisition) from one or more standard samples of known composition and elemental concentration"
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-ratio",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Sample data can then be related to the standards by ratio."
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-areal",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "does not take into account the thickness of the sample."
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-log",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "employing a log transformation is a suitable option for the data."
+    }
+   }
+  },
+  {
+   "@id": "q:pushie-pileup",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "target": {
+    "hasSource": "https://doi.org/10.1093/mtomcs/mfac032",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "note the presence of high-energy peaks at roughly double the energy of the Ga fluorescence peaks, indicating the detector is saturating with the standard in this case."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-thin",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The MicroAnalysis Toolkit assumes that you sample is infinitely thin (for now) and make NO thickness corrections."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-semiquant",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Thus, this procedure is really only semi-quantitative."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-energy",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "a calibration measurement at 8keV will be different than one at 12keV."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-distance",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "If you change detector distances, the calibration measurements will no longer be valid."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-matrix",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "If the tissue is thick, then you may need to worry about how much of the excitation x-rays enter the sample (i.e. the penetration depth) and then, how much of the fluorescence x-rays actually escape the sample."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-gain",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Make careful note of the I0 ion chamber gains (particularly if you change the gains)."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-i0-auto",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The quantification process will normalize the data to I0 so you will not have to make this correction later."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-std-film",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "sha256": "0a77309727128e2c976e1c33c50acb51baf66ceb1e20bad7bf2b93a4faeb3e9f",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-quantitative-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Each standard is a thin film support with an element of interest deposited on a Mylar film at approximately 50 micrograms per square cm."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-dt-rare",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "We VERY rarely do deadtime corrections on data collected at the micro-imaging beamlines at SSRL because our detectors are linear to very high count rates (ICR > 3 million counts per second)."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-dt-rule",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "If there is curvature to this line, then the detector is being saturated and you should do a deadtime correction."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-dt-tau",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "This opens a new window where you can enter a value for tau."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-blur-size",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Drag the \"Filter Size\" slider to 5."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-blur-sd",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Drag the \"Std. Dev.\" slider to 0.8."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-time-artifact",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The artifacts can be removed by normalizing your data to the TIME channel."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-stack-align",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/smak-basics",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Select 'Stack Alignment'"
+    }
+   }
+  },
+  {
+   "@id": "q:smak-pca-assume",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/pca-and-cluster-analysis",
+    "sha256": "cdbcad825ce51c273216ac190f72b1c8226bbdd4d28a19ae9878352f64e76243",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/pca-and-cluster-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The assumption here is that the areas that exhibit the greatest variation in signal are the areas that are chemically distinct."
+    }
+   }
+  },
+  {
+   "@id": "q:smak-pca-noise",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/pca-and-cluster-analysis",
+    "sha256": "cdbcad825ce51c273216ac190f72b1c8226bbdd4d28a19ae9878352f64e76243",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "https://www.sams-xrays.com/pca-and-cluster-analysis",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "pm with lower eigenvalues arise from noise."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-fit",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "XRF maps were fitted using PyMCA to ensure each element map has no overlapping fluorescence signal from elements of similar energies."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-blur",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "A filter was applied to all the elemental maps, which used a Gaussian distribution over an area of 5x5 pixels (with a standard deviation of 0.75)."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-scaling",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "the intensity scales of Ca and K were normalized to the same total counts which is 10x Cl, S and P. Similarly, Cl, S and P were scaled 10x Al and Mg."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-scaling-why",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "This allows for direct elemental comparisons between the samples, while still being able to observe differences in distribution in each element."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-stitch",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The optical images from the beamline were stitched using a vision tool that uses feature detection and merging to create a composite image, rather than stitching based on coordinates."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-resize",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The optical image was exported to the XRF file using a resize tool, which decreases the resolution of the optical image to that of the XRF, and uses coordinates in the file to align the images."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-resize-why",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "the loss of resolution of the optical image is acceptable, since the outline of the sample shape is the important marker for aligning XRF with FTIR images."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-ftir-atm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Spectra were corrected for atmospheric CO2 and water and denoised using a Savitzky-Golay filter (window size of 9 and polynomial order of 3), chosen to reduce high-frequency noise while preserving the shape and position of bands in the fingerprinting region."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-rubberband",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "A baseline rubberband method was applied, because the baseline across the acquired range is dominated by a smooth scattering offset well suited to a convex-hull correction, and was applied identically to every pixel and treatment so that any residual bias is systematic across the dataset."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-norm-1655",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "A mean normalization was applied at 1655 cm-1; while this can overlap with amide I, analyses were repeated with alternative normalization values (such as 2900 cm-1) which yielded the same results, confirming that observed spatial distributions are not an artefact of normalization."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-manual",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Manual alignment was chosen over automatic registration tools due to slight rotation in the sample between data collection from each mode, as well as differences in the data detection (at BL14-3, the detector is at 45° to the sample, while at BL1.4.3 the detector is 90° to the sample) which can create image distortions."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-markers",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "up to 35 reference markers were placed on clear features of the optical image aligned with the XRF data, including the outline of each sample and internal features."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-repeat",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The step was performed several times using different numbers of markers and marker positions to obtain the optimal alignment with the least amount of shear."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-rmse",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The RMSE was calculated to validate registration accuracy; the average RMSE for both alignments was 11 pixels. If removing clearly misaligned markers (due to shear) the RMSE decreases to 8 pixels."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-bound",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "correlation of chemical imaging modalities on features smaller ~80 µm (8 pixel RMSE, each pixel ~10 µm), should be interpreted with caution"
+    }
+   }
+  },
+  {
+   "@id": "q:pist-fa-weight",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The data channels from individual modalities were grouped together and auto-balanced by weighting the data channels by the overall sum of factor magnitudes within each data group."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-fa-why",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "This process ensures that the inherently different intensity magnitudes of XRF versus FTIR data contribute comparably to the shared FA space."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-fa-shared",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "the FA model was fit such that the two samples share a common loading (component) matrix while each sample has its own matrix score per loading."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-fa-n",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The FA generates as many components as data channels, in this case 20."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-varratio",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "The variance ratio is defined as the ratio of the individual component's variance (i.e. variation of FA score across pixels) to the sum of variances across all components."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-cohen",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "This was calculated using the mean component scores for a single component across datasets, normalized to the pooled standard deviation."
+    }
+   }
+  },
+  {
+   "@id": "q:pist-pearson",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "For each channel-component pair, the Pearson’s r was computed and represented as a heat map between -1 and +1"
+    }
+   }
+  },
+  {
+   "@id": "q:pist-acq",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "target": {
+    "hasSource": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Maps were collected at 4200 eV, with a 5 µm beam spot size, 10 µm step size and 50 ms dwell time."
+    }
+   }
+  },
+  {
+   "@id": "abs:pist-deadtime",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "result": "absent",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "summary": "Search of the pistachio manuscript for any statement of dead-time correction; terms searched: dead time, deadtime, dead-time, live time, livetime, ICR, OCR; none found as whole words in the normalized text."
+  },
+  {
+   "@id": "abs:pist-i0",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "result": "absent",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "file://Mutlimodal_pistachio_manuscript_V5.docx",
+    "sha256": "c3d3b771da5fab58f6a49173d479ff120ee100f8adea3b2b98b9dadab1a6fbaf",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+   },
+   "summary": "Search of the pistachio manuscript for any statement of I0 / incident-flux normalization of XRF maps; terms searched: I0, flux normal, incident flux, ion chamber, I1STRM; none found as whole words in the normalized text."
+  },
+  {
+   "@id": "abs:pushie-deadtime",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "result": "absent",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://doi.org/10.1093/mtomcs/mfac032",
+    "sha256": "494d94dc39bf985f7067bc4252f9e3c667388751da5253ef2ec9c54db29925f8",
+    "media_type": "application/pdf"
+   },
+   "summary": "Search of Pushie et al. 2022 for dead-time correction; terms searched: dead time, deadtime, dead-time; none found as whole words in the normalized text."
+  },
+  {
+   "@id": "abs:smak-blur-why",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "result": "absent",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "https://www.sams-xrays.com/smak-basics",
+    "sha256": "438d870a78b3381dc3475033dc26cf5fd6f8ec0370d9029bb7dc0c323d4d5db1",
+    "media_type": "text/plain"
+   },
+   "summary": "Search of SMAK Basics extraction for a stated reason for Gaussian blurring; terms searched: noise, alleviate, artifact; none found as whole words in the normalized text."
+  },
+  {
+   "@id": "inf:pist-deadtime-not-applied",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "inferred",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "Dead-time correction was not applied in the pistachio XRF processing.",
+   "rationale": "The manuscript is silent on dead-time correction (abs:pist-deadtime); SMAK, the processing software, states dead-time correction is very rarely applied at SSRL micro-imaging beamlines (q:smak-dt-rare). The most plausible reading is that no correction was applied."
+  },
+  {
+   "@id": "inf:pist-i0-unknown",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "unknown",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "Whether pistachio XRF maps were normalized to incident flux cannot be determined from the manuscript; quantification (which would normalize automatically) was not performed."
+  },
+  {
+   "@id": "der:reg-bound",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "Co-localization claims are bounded at ~80 µm feature scale by registration accuracy.",
+   "rationale": "8 px RMSE x ~10 µm per pixel gives ~80 µm; stated by the authors as the scale below which co-localization should be interpreted with caution (q:pist-rmse, q:pist-bound)."
+  },
+  {
+   "@id": "der:fit-vs-roi-rule",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "Decision rule: fit spectra when fluorescence lines overlap; ROI summation only when peaks are well resolved.",
+   "rationale": "Three tiers state the same rule: method paper (q:sole-roi-fast), review (q:pushie-fit-overlap), and trace (q:pist-fit): fit when lines overlap, ROI is acceptable otherwise."
+  },
+  {
+   "@id": "inf:smak-calib-free",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "inferred",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "In SMAK practice the energy-calibration parameters are held fixed on the first fit.",
+   "rationale": "SMAK MCA guide (not in this bundle's sources; see register src:smak-mca) describes unchecking Spectrometer Zero, Gain and Detector Width on a first small fit, whereas Solé 2007 fits ZERO/GAIN/NOISE/FANO globally (q:sole-global-params). Read as: SMAK practice fixes calibration on the first pass, refits later."
+  },
+  {
+   "@id": "act:pist-deadtime-not-applied",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "abs:pist-deadtime",
+    "q:smak-dt-rare"
+   ],
+   "generated": [
+    "inf:pist-deadtime-not-applied"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:pist-i0-unknown",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "abs:pist-i0",
+    "q:smak-i0-auto"
+   ],
+   "generated": [
+    "inf:pist-i0-unknown"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:reg-bound",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:pist-rmse",
+    "q:pist-bound"
+   ],
+   "generated": [
+    "der:reg-bound"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:fit-vs-roi-rule",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:sole-roi-fast",
+    "q:pushie-fit-overlap",
+    "q:pist-fit"
+   ],
+   "generated": [
+    "der:fit-vs-roi-rule"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:smak-calib-free",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:sole-global-params"
+   ],
+   "generated": [
+    "inf:smak-calib-free"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "q:code-dt-model",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "#DT: corFF=FF*exp(tau*1e-6*ICR)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-dt-apply",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "dtcor=np.exp(float(self.deadtimevalue.getvalue())*1e-6*icr)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-dt-toggle",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "self.dodt=tkinter.IntVar()"
+    }
+   }
+  },
+  {
+   "@id": "q:code-i0-toggle",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "self.doI0c=tkinter.IntVar()"
+    }
+   }
+  },
+  {
+   "@id": "q:code-i0-divide",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "newdata[i,j]=float(pic[i,j])/float(i0dat[i,j])"
+    }
+   }
+  },
+  {
+   "@id": "q:code-i0-prefer",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "sha256": "c2af0ff834dbe6af35c7022d31cb3ecc54dfa79d0498c1a6a9319f2dbe780203",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/smak.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "if 'I0STRM' in self.mapdata.labels:"
+    }
+   }
+  },
+  {
+   "@id": "q:code-time-norm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/__main__.py",
+    "sha256": "59ea48aa135f7e0b536d9f184e392d3fcb12f5bf2c745fb64d6f506a1c4b4728",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/__main__.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "newdata=ad/Tdat*80000000"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fastfit",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaFitWrapper.py",
+    "sha256": "7a6ca3afb488742fb9107e446e6cf0059f5c3a326f9e5b93a787a5b6fdc3d5a6",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaFitWrapper.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "fFit=FastXRFLinearFit.FastXRFLinearFit(mcafit=self.mcafit)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fastfit-args",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaFitWrapper.py",
+    "sha256": "7a6ca3afb488742fb9107e446e6cf0059f5c3a326f9e5b93a787a5b6fdc3d5a6",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaFitWrapper.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "ysum=None, weight=None, refit=True)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-cfg-fixed",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "sha256": "0651053f0af7262e1dbe211c99aa5a055c3be75e34901baedc87626cc329563c",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "fixednoise = 1 fixedgain = 1"
+    }
+   }
+  },
+  {
+   "@id": "q:code-cfg-fixedzero",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "sha256": "0651053f0af7262e1dbe211c99aa5a055c3be75e34901baedc87626cc329563c",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "fixedsum = 1 fixedzero = 1"
+    }
+   }
+  },
+  {
+   "@id": "q:code-cfg-snip",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "sha256": "0651053f0af7262e1dbe211c99aa5a055c3be75e34901baedc87626cc329563c",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "snipwidth = 50"
+    }
+   }
+  },
+  {
+   "@id": "q:code-cfg-strip",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "sha256": "0651053f0af7262e1dbe211c99aa5a055c3be75e34901baedc87626cc329563c",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "stripalgorithm = 1"
+    }
+   }
+  },
+  {
+   "@id": "q:code-cfg-hypermet",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "sha256": "0651053f0af7262e1dbe211c99aa5a055c3be75e34901baedc87626cc329563c",
+    "media_type": "text/plain"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/pyMcaConfigs/activePyMCAConfig.cfg",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "hypermetflag = 7"
+    }
+   }
+  },
+  {
+   "@id": "q:code-quant-divide",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "sha256": "b541b9ba8bd75e62892ee803a49bb62ee3ae039624936acda98fee76869be0db",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "newdata=np.divide(adata,i0dat, out=np.zeros_like(adata),where=i0dat!=0)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-quant-poly",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "sha256": "b541b9ba8bd75e62892ee803a49bb62ee3ae039624936acda98fee76869be0db",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "mod = [fw.slope,fw.intc] pred = np.poly1d(mod) newdata = pred(newdata)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-quant-nonorm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "sha256": "b541b9ba8bd75e62892ee803a49bb62ee3ae039624936acda98fee76869be0db",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/BatchAnalyze.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "if \"None\" in normCCSchan: normCCSchan = None"
+    }
+   }
+  },
+  {
+   "@id": "q:code-stack-transl",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "sha256": "7c3cd7c92448b4b3642012080c5eff45ca5dc689986390d66492602dcdd79879",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "def TwoDAlign(self): # Translation alignment"
+    }
+   }
+  },
+  {
+   "@id": "q:code-stack-hipass",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "sha256": "7c3cd7c92448b4b3642012080c5eff45ca5dc689986390d66492602dcdd79879",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "D = d - scnd.gaussian_filter(d, 2) # Take the high-F component"
+    }
+   }
+  },
+  {
+   "@id": "q:code-stack-phase",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "sha256": "7c3cd7c92448b4b3642012080c5eff45ca5dc689986390d66492602dcdd79879",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/AlignStack3.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "self.TList[dset][i, :], error, difphase = register_translation("
+    }
+   }
+  },
+  {
+   "@id": "q:code-tps",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/ExportRegistrationClass.py",
+    "sha256": "523097b31896b4dc82cd72f53c12bf78eaf46c414fa2a82773422e12f3573c5d",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/ExportRegistrationClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "aligneddata = tps_warp2D(Y,Z,image,template.shape)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fa-norm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "sha256": "7752b585e28b41b55815555e9c8d36e5d7bc7d39bf56e5f181b202ab54f7bd98",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "evnorm = np.sum(abs(self.PCAdataStruct.PCAevect),axis=0)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fa-grp",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "sha256": "7752b585e28b41b55815555e9c8d36e5d7bc7d39bf56e5f181b202ab54f7bd98",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "self.grpnorms.append(np.sum(evnorm[i:i+len(ch)])/len(ch))"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fa-adj",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "sha256": "7752b585e28b41b55815555e9c8d36e5d7bc7d39bf56e5f181b202ab54f7bd98",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "cd = max(self.grpnorms) adjfact = float(cd)/np.array(self.grpnorms)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fa-cycles",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "sha256": "7752b585e28b41b55815555e9c8d36e5d7bc7d39bf56e5f181b202ab54f7bd98",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "cycles = 3"
+    }
+   }
+  },
+  {
+   "@id": "q:code-fa-sign",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "sha256": "7752b585e28b41b55815555e9c8d36e5d7bc7d39bf56e5f181b202ab54f7bd98",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/WeightedGroupPCA.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "if abs(dmin)>abs(dmax):"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-atm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "(data,b) = atm.atmospheric(wn,data,atm=None,cut_co2=params.atmCutCO2)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-mie",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "data = mie.rmiesc(wn,data,ref,iterations=params.mieMaxIter,clusters=params.mieClusters,progressCallback=normCallback)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-sg",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "corr = scipy.signal.savgol_filter(data, params.denoiseWindow, params.denoisePolyOrder, axis=1)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-rubber",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "if params.baseline == 'Rubberband': bl = baseline.rubberband(wn, data)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-norm",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "data = normalization.normalize_spectra(params.defs.normtrans[params.normalization], data, wn=wn, wavenum=params.normvalue)"
+    }
+   }
+  },
+  {
+   "@id": "q:code-ir-defaults",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "quote",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "source": {
+    "uri": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "sha256": "0ed250df76601cb4fbd400ee9384363dd6a9c635b06afed31f3818d58ecfbdca",
+    "media_type": "text/x-python"
+   },
+   "target": {
+    "hasSource": "smak-3.0.11.tar.gz#smak-3.0.11/src/smak/IR_MathClass.py",
+    "selector": {
+     "@type": "oa:TextQuoteSelector",
+     "exact": "self.baseline = 'Rubberband'"
+    }
+   }
+  },
+  {
+   "@id": "der:time-scalar",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "The time-normalization scalar 0.0000125 is the reciprocal of an 80 MHz dwell clock.",
+   "rationale": "SMAK divides by the TIME channel and multiplies by 80,000,000 (q:code-time-norm); the guide's scalar 0.0000125 is 1/80,000,000, i.e. the TIME channel counts an 80 MHz clock and the operation converts counts to counts per second."
+  },
+  {
+   "@id": "der:dt-paralyzable",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK's dead-time correction is the paralyzable (exponential) model.",
+   "rationale": "corFF = FF*exp(tau*1e-6*ICR) (q:code-dt-model, q:code-dt-apply) is the paralyzable dead-time model with tau in microseconds and ICR in counts per second."
+  },
+  {
+   "@id": "der:corrections-viewtime",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "In SMAK, dead-time and I0 corrections are view-time toggles, default off, leaving no trace in saved channels.",
+   "rationale": "dodt and doI0c are Tk IntVars (q:code-dt-toggle, q:code-i0-toggle) whose default is 0, applied when a channel is rendered or analysed (q:code-dt-apply, q:code-i0-divide) rather than written as new channels. Off unless the operator switches them on; no record in the data file."
+  },
+  {
+   "@id": "der:smak-fit-linear",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK per-pixel spectrum fitting is unweighted linear least squares with a fixed peak shape.",
+   "rationale": "SMAK calls PyMca FastXRFLinearFit.fitMultipleSpectra with weight=None and refit=True (q:code-fastfit, q:code-fastfit-args) under a configuration in which zero, gain, noise, fano and sum are all fixed (q:code-cfg-fixed, q:code-cfg-fixedzero). Per-pixel fitting is therefore an unweighted linear fit of line areas with a fixed peak model; the non-linear parameters are never refit per pixel."
+  },
+  {
+   "@id": "der:quant-linear-cal",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK quantification is a linear calibration C = slope*(A/I0)+intercept, not a pure ratio.",
+   "rationale": "Quantification divides by the chosen I0 channel (q:code-quant-divide), then applies C = slope*(A/I0) + intercept (q:code-quant-poly). This is a linear calibration curve, which reduces to a ratio only when intercept is zero. The normalization channel may be None (q:code-quant-nonorm)."
+  },
+  {
+   "@id": "der:stack-translation-only",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK automatic stack alignment is translation-only.",
+   "rationale": "Automatic stack alignment estimates a translation by phase correlation on high-pass-filtered images (q:code-stack-transl, q:code-stack-hipass, q:code-stack-phase); no rotation or scale is estimated."
+  },
+  {
+   "@id": "der:manual-tps",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK manual registration is a thin-plate-spline warp on landmarks.",
+   "rationale": "Manual registration warps the image with a thin-plate spline fitted to operator landmark pairs (q:code-tps); it is a non-rigid deformation, not an affine transform."
+  },
+  {
+   "@id": "der:fa-weighting",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "Weighted-group FA balancing: w_g = max n / n_g, iterated three times; sign fixed by largest loading.",
+   "rationale": "Group norm n_g = mean over channels in group g of sum_k |loading_kc| (q:code-fa-norm, q:code-fa-grp); weight w_g = max_g' n_g' / n_g (q:code-fa-adj), applied and re-estimated for 3 cycles (q:code-fa-cycles). Component sign is flipped so the largest-magnitude loading is positive (q:code-fa-sign)."
+  },
+  {
+   "@id": "der:ftir-steps-separate",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "summary": "SMAK's FTIR preprocessing is five independently switchable steps, so they are separate Transformations.",
+   "rationale": "IR_MathClass applies atmospheric correction, optional RMieS, Savitzky-Golay, baseline, and normalization as separate conditional calls with separate parameters (q:code-ir-atm, q:code-ir-mie, q:code-ir-sg, q:code-ir-rubber, q:code-ir-norm); each can be switched independently."
+  },
+  {
+   "@id": "act:time-scalar",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-time-norm"
+   ],
+   "generated": [
+    "der:time-scalar"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:dt-paralyzable",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-dt-model",
+    "q:code-dt-apply"
+   ],
+   "generated": [
+    "der:dt-paralyzable"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:corrections-viewtime",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-dt-toggle",
+    "q:code-i0-toggle",
+    "q:code-dt-apply",
+    "q:code-i0-divide"
+   ],
+   "generated": [
+    "der:corrections-viewtime"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:smak-fit-linear",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-fastfit",
+    "q:code-fastfit-args",
+    "q:code-cfg-fixed",
+    "q:code-cfg-fixedzero"
+   ],
+   "generated": [
+    "der:smak-fit-linear"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:quant-linear-cal",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-quant-divide",
+    "q:code-quant-poly",
+    "q:code-quant-nonorm"
+   ],
+   "generated": [
+    "der:quant-linear-cal"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:stack-translation-only",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-stack-transl",
+    "q:code-stack-hipass",
+    "q:code-stack-phase"
+   ],
+   "generated": [
+    "der:stack-translation-only"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:manual-tps",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-tps"
+   ],
+   "generated": [
+    "der:manual-tps"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:fa-weighting",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-fa-norm",
+    "q:code-fa-grp",
+    "q:code-fa-adj",
+    "q:code-fa-cycles",
+    "q:code-fa-sign"
+   ],
+   "generated": [
+    "der:fa-weighting"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "act:ftir-steps-separate",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "used": [
+    "q:code-ir-atm",
+    "q:code-ir-mie",
+    "q:code-ir-sg",
+    "q:code-ir-rubber",
+    "q:code-ir-norm"
+   ],
+   "generated": [
+    "der:ftir-steps-separate"
+   ],
+   "plan_step": "xfm:t/build-plan-graph"
+  },
+  {
+   "@id": "ent:xfm-gold-plan",
+   "@type": "prov:Entity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "how": "derived",
+   "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "rationale": "Plan graph hand-built from the quote, absence and inferred entities in this bundle; every field's Support names the grit it rests on.",
+   "summary": "sciplan PlanGraph for the pistachio XFM+FTIR workflow (gold graph 0.1.0).",
+   "payload": "https://phzwart.github.io/sciplan/schema/sciplan",
+   "payload_ref": {
+    "uri": "xfm-gold.plan.yaml",
+    "sha256": "5599d51b26a84fe777b928e30d7bbaa9266d370368eda3bebd563ba2d72d99e0",
+    "media_type": "application/yaml"
+   }
+  },
+  {
+   "@id": "act:build-plan-graph",
+   "@type": "prov:Activity",
+   "plan": "plan:xfm-gold-0.1.0",
+   "kind": "derivation",
+   "performed_by": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)",
+   "plan_step": "xfm:t/build-plan-graph",
+   "rationale": "Consolidation of receipts into the typed plan graph.",
+   "used": [
+    "q:sole-roi-fast",
+    "q:sole-gaussian",
+    "q:sole-global-params",
+    "q:sole-60params",
+    "q:sole-merge-10ev",
+    "q:sole-escape",
+    "q:sole-auger-crude",
+    "q:sole-edge-validation",
+    "q:sole-secondary",
+    "q:sole-fp-unknowns",
+    "q:sole-parallel-beam",
+    "q:pushie-i0",
+    "q:pushie-fit-overlap",
+    "q:pushie-kkb-caka",
+    "q:pushie-std-same-scan",
+    "q:pushie-ratio",
+    "q:pushie-areal",
+    "q:pushie-log",
+    "q:pushie-pileup",
+    "q:smak-thin",
+    "q:smak-semiquant",
+    "q:smak-energy",
+    "q:smak-distance",
+    "q:smak-matrix",
+    "q:smak-gain",
+    "q:smak-i0-auto",
+    "q:smak-std-film",
+    "q:smak-dt-rare",
+    "q:smak-dt-rule",
+    "q:smak-dt-tau",
+    "q:smak-blur-size",
+    "q:smak-blur-sd",
+    "q:smak-time-artifact",
+    "q:smak-stack-align",
+    "q:smak-pca-assume",
+    "q:smak-pca-noise",
+    "q:pist-fit",
+    "q:pist-blur",
+    "q:pist-scaling",
+    "q:pist-scaling-why",
+    "q:pist-stitch",
+    "q:pist-resize",
+    "q:pist-resize-why",
+    "q:pist-ftir-atm",
+    "q:pist-rubberband",
+    "q:pist-norm-1655",
+    "q:pist-manual",
+    "q:pist-markers",
+    "q:pist-repeat",
+    "q:pist-rmse",
+    "q:pist-bound",
+    "q:pist-fa-weight",
+    "q:pist-fa-why",
+    "q:pist-fa-shared",
+    "q:pist-fa-n",
+    "q:pist-varratio",
+    "q:pist-cohen",
+    "q:pist-pearson",
+    "q:pist-acq",
+    "abs:pist-deadtime",
+    "abs:pist-i0",
+    "abs:pushie-deadtime",
+    "abs:smak-blur-why",
+    "inf:pist-deadtime-not-applied",
+    "inf:pist-i0-unknown",
+    "der:reg-bound",
+    "der:fit-vs-roi-rule",
+    "inf:smak-calib-free",
+    "q:code-dt-model",
+    "q:code-dt-apply",
+    "q:code-dt-toggle",
+    "q:code-i0-toggle",
+    "q:code-i0-divide",
+    "q:code-i0-prefer",
+    "q:code-time-norm",
+    "q:code-fastfit",
+    "q:code-fastfit-args",
+    "q:code-cfg-fixed",
+    "q:code-cfg-fixedzero",
+    "q:code-cfg-snip",
+    "q:code-cfg-strip",
+    "q:code-cfg-hypermet",
+    "q:code-quant-divide",
+    "q:code-quant-poly",
+    "q:code-quant-nonorm",
+    "q:code-stack-transl",
+    "q:code-stack-hipass",
+    "q:code-stack-phase",
+    "q:code-tps",
+    "q:code-fa-norm",
+    "q:code-fa-grp",
+    "q:code-fa-adj",
+    "q:code-fa-cycles",
+    "q:code-fa-sign",
+    "q:code-ir-atm",
+    "q:code-ir-mie",
+    "q:code-ir-sg",
+    "q:code-ir-rubber",
+    "q:code-ir-norm",
+    "q:code-ir-defaults",
+    "der:time-scalar",
+    "der:dt-paralyzable",
+    "der:corrections-viewtime",
+    "der:smak-fit-linear",
+    "der:quant-linear-cal",
+    "der:stack-translation-only",
+    "der:manual-tps",
+    "der:fa-weighting",
+    "der:ftir-steps-separate"
+   ],
+   "generated": [
+    "ent:xfm-gold-plan"
+   ]
+  }
+ ]
+}

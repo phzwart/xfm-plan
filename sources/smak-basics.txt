@@ -1,0 +1,24 @@
+# Text extraction of https://www.sams-xrays.com/smak-basics, retrieved 2026-09-16 via fetch-and-extract (raw HTML not retrievable from build host). Re-hash from raw HTML at registration.
+Deadtime is essentially oversaturation of the detector.
+It occurs when the number of incoming photons exceeds the ability of the detector to count; that is, the incoming count rate (ICR) is greater than the outgoing count rate (OCR).
+We VERY rarely do deadtime corrections on data collected at the micro-imaging beamlines at SSRL because our detectors are linear to very high count rates (ICR > 3 million counts per second).
+You can tell if you are in the deadtime regime by looking at OCR vs. ICR in the correlation plotter.
+If there is curvature to this line, then the detector is being saturated and you should do a deadtime correction.
+Plot OCR (y-axis) vs. ICR (x-axis) in the correlation plotter
+Under the "Analysis" drop down manu, select "Do ICR-OCR Deadtime".
+This fits a function to the data, and you will see a numerical value for "DEADTIME" displayed at the bottom left of the correlation window.
+This value is "tau".
+Under the "Process"menu in the main SMAK window, there is an option for "Deadtime".
+This opens a new window where you can enter a value for tau.
+SMAK automatically loads the fitted value from the correlation plotter.
+Check the box that says "Do DT correction?" and press "ok".
+Drag the "Filter Size" slider to 5.
+Drag the "Std. Dev." slider to 0.8.
+"Blur" takes a Gaussian distribution of the area.
+Enter "0.0000125".
+This is due to the scanning signal processing electronics and is recorded in the TIME channel.
+The artifacts can be removed by normalizing your data to the TIME channel.
+Load you first data file (e.g. 12 KeV map), then import the channel you want to align from your second data file (e.g. 7 KeV map)
+Select 'Stack Alignment'
+SMAK will now align the selected channels and make a new channel with '-stack1' appended to the end of the name
+Very broadly, component 1 is using a proxy for concentration as concentration is the greatest variable in your data.

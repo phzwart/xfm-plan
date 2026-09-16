@@ -1,0 +1,1882 @@
+field: xfm
+version: 0.2.0-gold
+data_states:
+- id: xfm:ds/mca_spectrum
+  name: per-pixel MCA spectrum
+  quantity: fluorescence counts per energy channel
+  units: counts
+  indexed_by:
+  - pixel
+  - energy_channel
+  uncertainty: counting
+  aliases:
+  - term: MCA data
+    used_by: SMAK
+  - term: full spectrum
+    used_by: XRF-Maps
+  - term: MCA file
+    used_by: SMAK
+  support:
+  - field: quantity
+    grit: q:pist-acq
+    how: quote
+    note: acquisition parameters of the trace
+- id: xfm:ds/roi_map
+  name: ROI-summed element map
+  quantity: summed counts in an energy window
+  units: counts
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: counting
+  qualifiers:
+  - roi_summed
+  aliases:
+  - term: binned map
+    used_by: Pushie 2022
+  - term: ROI
+    used_by: PyMca
+  - term: roi_fit_routine
+    used_by: XRF-Maps
+- id: xfm:ds/fitted_area_map
+  name: fitted line-area map
+  quantity: fitted fluorescence line area
+  units: counts
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: fitted_covariance
+  qualifiers:
+  - peak_fitted
+  aliases:
+  - term: element map
+    used_by: pistachio V5
+  - term: fitted map
+    used_by: Solé 2007
+- id: xfm:ds/fitted_area_map_dtc
+  name: fitted line-area map, dead-time corrected
+  quantity: fitted fluorescence line area
+  units: counts
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: fitted_covariance
+  qualifiers:
+  - peak_fitted
+  - dead_time_corrected
+- id: xfm:ds/normalized_map
+  name: flux-normalized element map
+  quantity: line area per unit incident flux
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: propagated
+  qualifiers:
+  - peak_fitted
+  - flux_normalized
+  known_up_to:
+  - scale
+  support:
+  - field: quantity
+    grit: q:pushie-i0
+    how: quote
+- id: xfm:ds/smoothed_map
+  name: smoothed element map
+  quantity: fitted fluorescence line area
+  units: counts
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: none
+  qualifiers:
+  - peak_fitted
+  - smoothed
+- id: xfm:ds/scaled_map
+  name: group-scaled element map
+  quantity: relative fluorescence intensity
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: none
+  qualifiers:
+  - peak_fitted
+  - smoothed
+  - scaled
+  known_up_to:
+  - scale
+  support:
+  - field: quantity
+    grit: q:pist-scaling
+    how: quote
+- id: xfm:ds/areal_concentration_map
+  name: areal concentration map
+  quantity: areal mass density of element
+  units: ug/cm2
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: propagated
+  qualifiers:
+  - peak_fitted
+  - flux_normalized
+  - quantified_areal
+  aliases:
+  - term: Xx-conc1 channel
+    used_by: SMAK
+  - term: <chan>-<units>-<n> channel
+    used_by: SMAK 3.0.11 code
+    note: guide says Xx-conc1
+  support:
+  - field: units
+    grit: q:smak-std-film
+    how: quote
+  - field: quantity
+    grit: q:pushie-areal
+    how: quote
+- id: xfm:ds/mass_fraction_map
+  name: mass-fraction concentration map
+  quantity: mass fraction of element
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: propagated
+  qualifiers:
+  - peak_fitted
+  - flux_normalized
+  - quantified_mass
+  support:
+  - field: quantity
+    grit: q:sole-fp-unknowns
+    how: quote
+- id: xfm:ds/optical_image
+  name: beamline optical image
+  quantity: visible-light intensity
+  indexed_by:
+  - pixel
+  uncertainty: none
+- id: xfm:ds/optical_on_xrf_grid
+  name: optical image resampled to XRF grid
+  quantity: visible-light intensity
+  indexed_by:
+  - pixel
+  uncertainty: none
+  qualifiers:
+  - resampled
+- id: xfm:ds/ftir_spectrum
+  name: per-pixel FTIR spectrum
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+- id: xfm:ds/ftir_spectrum_pre
+  name: preprocessed FTIR spectrum
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - atmosphere_corrected
+  - denoised
+  - baseline_corrected
+  - mean_normalized
+  known_up_to:
+  - scale
+- id: xfm:ds/ftir_band_map
+  name: FTIR band-abundance map
+  quantity: binned absorbance per assigned band
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - binned
+- id: xfm:ds/registered_stack
+  name: pixel-registered multimodal stack
+  quantity: XRF and FTIR channels on one grid
+  indexed_by:
+  - pixel
+  - component
+  uncertainty: empirical
+  qualifiers:
+  - registered
+  known_up_to:
+  - translation
+  - rotation
+- id: xfm:ds/fa_scores
+  name: factor-analysis component score maps
+  quantity: component score
+  indexed_by:
+  - pixel
+  - component
+  - sample
+  uncertainty: none
+  known_up_to:
+  - sign
+  - scale
+  support:
+  - field: quantity
+    grit: q:pist-fa-n
+    how: quote
+- id: xfm:ds/fa_loadings
+  name: factor-analysis loadings
+  quantity: channel loading on component
+  indexed_by:
+  - component
+  uncertainty: none
+  known_up_to:
+  - sign
+  - scale
+- id: xfm:ds/claim_relative_distribution
+  name: 'claim: relative elemental distribution'
+  quantity: statement
+  indexed_by:
+  - element
+  uncertainty: none
+- id: xfm:ds/claim_colocalization
+  name: 'claim: treatment-dependent co-localization of elements and biomolecular bands'
+  quantity: statement
+  uncertainty: none
+- id: xfm:ds/time_normalized_map
+  name: dwell-time-normalized element map
+  quantity: counts per second
+  units: counts/s
+  indexed_by:
+  - pixel
+  - element
+  uncertainty: none
+  qualifiers:
+  - time_normalized
+- id: xfm:ds/ftir_atm
+  name: FTIR spectrum, atmosphere-corrected
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - atmosphere_corrected
+- id: xfm:ds/ftir_denoised
+  name: FTIR spectrum, denoised
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - atmosphere_corrected
+  - denoised
+- id: xfm:ds/ftir_baselined
+  name: FTIR spectrum, baseline-corrected
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - atmosphere_corrected
+  - denoised
+  - baseline_corrected
+- id: xfm:ds/ftir_scatter_corrected
+  name: FTIR spectrum, resonant-Mie corrected
+  quantity: IR absorbance per wavenumber
+  indexed_by:
+  - pixel
+  - spectral_band
+  uncertainty: none
+  qualifiers:
+  - atmosphere_corrected
+  - scatter_corrected
+parameters:
+- id: xfm:p/merge_threshold
+  name: line merge threshold
+  kind: numerical
+  units: eV
+  default_value: '10'
+  default_scope: PyMca
+  set_by: software_default
+  support:
+  - field: default_value
+    grit: q:sole-merge-10ev
+    how: quote
+- id: xfm:p/blur_size
+  name: Gaussian filter size
+  kind: numerical
+  units: pixels
+  default_value: '5'
+  default_scope: SMAK Basics guide
+  set_by: user
+  support:
+  - field: default_value
+    grit: q:smak-blur-size
+    how: quote
+- id: xfm:p/blur_sigma
+  name: Gaussian filter standard deviation
+  kind: numerical
+  units: pixels
+  default_value: '0.8'
+  default_scope: SMAK Basics guide
+  set_by: user
+  support:
+  - field: default_value
+    grit: q:smak-blur-sd
+    how: quote
+- id: xfm:p/tau
+  name: dead-time constant tau
+  kind: empirical
+  set_by: calibration
+  physical_meaning: detector dead time per event, fitted from OCR vs ICR
+  support:
+  - field: physical_meaning
+    grit: q:smak-dt-tau
+    how: quote
+- id: xfm:p/std_conc
+  name: standard areal concentration
+  kind: physical
+  units: ug/cm2
+  set_by: user
+  physical_meaning: known areal density of the thin-film standard
+  support:
+  - field: physical_meaning
+    grit: q:smak-std-film
+    how: quote
+- id: xfm:p/i0_gain
+  name: I0 ion chamber gain
+  kind: physical
+  set_by: user
+  physical_meaning: amplifier gain of the incident-flux ion chamber; must match between standard and sample
+  support:
+  - field: physical_meaning
+    grit: q:smak-gain
+    how: quote
+- id: xfm:p/sample_composition
+  name: sample matrix composition, density, thickness
+  kind: physical
+  set_by: user
+  physical_meaning: matrix for fundamental-parameter attenuation correction
+  support:
+  - field: physical_meaning
+    grit: q:sole-parallel-beam
+    how: quote
+- id: xfm:p/n_markers
+  name: number of registration markers
+  kind: numerical
+  set_by: user
+  default_scope: pistachio V5 (up to 35)
+  support:
+  - field: default_scope
+    grit: q:pist-markers
+    how: quote
+- id: xfm:p/sg_window
+  name: Savitzky-Golay window
+  kind: numerical
+  set_by: user
+  default_scope: pistachio V5 (9)
+  support:
+  - field: default_scope
+    grit: q:pist-ftir-atm
+    how: quote
+- id: xfm:p/sg_order
+  name: Savitzky-Golay polynomial order
+  kind: numerical
+  set_by: user
+  default_scope: pistachio V5 (3)
+  support:
+  - field: default_scope
+    grit: q:pist-ftir-atm
+    how: quote
+- id: xfm:p/norm_wavenumber
+  name: FTIR normalization wavenumber
+  kind: empirical
+  units: cm-1
+  set_by: decision
+  set_by_decision: xfm:d/norm_wavenumber
+  support:
+  - field: set_by
+    grit: q:pist-norm-1655
+    how: quote
+- id: xfm:p/fa_weighting
+  name: FA channel-group weighting
+  kind: numerical
+  set_by: software_default
+  physical_meaning: auto-balance by sum of factor magnitudes per modality group
+  support:
+  - field: physical_meaning
+    grit: q:pist-fa-weight
+    how: quote
+- id: xfm:p/dodt
+  name: dead-time toggle
+  kind: numerical
+  default_value: 0 (off)
+  default_scope: SMAK 3.0.11
+  set_by: user
+  support:
+  - field: default_value
+    grit: q:code-dt-toggle
+    how: quote
+  - field: default_value
+    grit: der:corrections-viewtime
+    how: derived
+- id: xfm:p/doI0c
+  name: I0 normalization toggle
+  kind: numerical
+  default_value: 0 (off)
+  default_scope: SMAK 3.0.11
+  set_by: user
+  support:
+  - field: default_value
+    grit: q:code-i0-toggle
+    how: quote
+- id: xfm:p/snip_width
+  name: SNIP background width
+  kind: numerical
+  units: channels
+  default_value: '50'
+  default_scope: SMAK 3.0.11 activePyMCAConfig.cfg
+  set_by: software_default
+  support:
+  - field: default_value
+    grit: q:code-cfg-snip
+    how: quote
+- id: xfm:p/hypermet_flag
+  name: Hypermet terms
+  kind: numerical
+  default_value: 7 (Gaussian + short tail + long tail; no step)
+  default_scope: SMAK 3.0.11 activePyMCAConfig.cfg
+  set_by: software_default
+  support:
+  - field: default_value
+    grit: q:code-cfg-hypermet
+    how: quote
+  gaps:
+  - field: default_value
+    kind: not_in_corpus
+    note: Bit meaning of hypermetflag taken from PyMca convention, not from a registered source.
+- id: xfm:p/mie_reference
+  name: RMieS reference spectrum
+  kind: empirical
+  default_value: None (off)
+  default_scope: SMAK 3.0.11 IR_MathClass
+  set_by: user
+  physical_meaning: pure-absorbance reference (Lignin, Casein, Matrigel) for resonant Mie scattering correction
+  support:
+  - field: physical_meaning
+    grit: q:code-ir-mie
+    how: quote
+rationales:
+- id: xfm:r/fit_over_roi
+  name: fit when lines overlap
+  statement: ROI summation cannot separate overlapping fluorescence lines; fitting a physics-constrained model can.
+  kind: physical
+  support:
+  - field: statement
+    grit: q:sole-roi-fast
+    how: quote
+  - field: statement
+    grit: q:pushie-fit-overlap
+    how: quote
+  - field: statement
+    grit: q:pist-fit
+    how: quote
+- id: xfm:r/global_calibration
+  name: fit calibration globally, elements as groups
+  statement: Fitting every peak independently would need ~60 non-linear parameters for 10 elements and would not converge; instead ZERO, GAIN, NOISE, FANO are fitted once for the region and lines are grouped
+    per element with known ratios.
+  kind: statistical
+  support:
+  - field: statement
+    grit: q:sole-60params
+    how: quote
+  - field: statement
+    grit: q:sole-global-params
+    how: quote
+- id: xfm:r/i0_normalization
+  name: normalize to incident flux
+  statement: Dividing by I0 removes incident-flux variation so relative levels can be compared between samples.
+  kind: physical
+  support:
+  - field: statement
+    grit: q:pushie-i0
+    how: quote
+- id: xfm:r/dt_rarely_needed
+  name: dead-time correction rarely needed at SSRL micro-imaging beamlines
+  statement: The detectors are linear to very high count rates, so dead-time correction is applied only when OCR vs ICR shows curvature.
+  kind: empirical
+  support:
+  - field: statement
+    grit: q:smak-dt-rare
+    how: quote
+  - field: statement
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:r/group_scaling
+  name: scale element groups to comparable totals
+  statement: Scaling intensity ranges by element group allows direct comparison between samples while preserving within-element distribution differences.
+  kind: practical
+  support:
+  - field: statement
+    grit: q:pist-scaling-why
+    how: quote
+- id: xfm:r/optical_resize
+  name: resample optical to XRF grid
+  statement: Losing optical resolution is acceptable because only the sample outline is needed as the registration marker.
+  kind: practical
+  support:
+  - field: statement
+    grit: q:pist-resize-why
+    how: quote
+- id: xfm:r/manual_registration
+  name: manual over automatic registration
+  statement: Rotation between modalities and different detector geometries (45° vs 90°) distort images beyond what automatic tools handle.
+  kind: practical
+  support:
+  - field: statement
+    grit: q:pist-manual
+    how: quote
+- id: xfm:r/rubberband
+  name: rubberband baseline
+  statement: The FTIR baseline is dominated by a smooth scattering offset suited to convex-hull correction; applying it identically everywhere makes residual bias systematic.
+  kind: physical
+  support:
+  - field: statement
+    grit: q:pist-rubberband
+    how: quote
+- id: xfm:r/sg_denoise
+  name: Savitzky-Golay denoising
+  statement: Reduces high-frequency noise while preserving band shape and position in the fingerprint region.
+  kind: statistical
+  support:
+  - field: statement
+    grit: q:pist-ftir-atm
+    how: quote
+- id: xfm:r/fa_weighting
+  name: auto-balance modality groups
+  statement: Without weighting, the larger intensity magnitudes of XRF would dominate the shared FA space over FTIR.
+  kind: statistical
+  support:
+  - field: statement
+    grit: q:pist-fa-why
+    how: quote
+- id: xfm:r/pca_variance
+  name: variance marks chemical distinctness
+  statement: Areas with the greatest signal variation are assumed to be the chemically distinct areas.
+  kind: statistical
+  support:
+  - field: statement
+    grit: q:smak-pca-assume
+    how: quote
+assumptions:
+- id: xfm:a/gaussian_response
+  name: Gaussian detector response
+  statement: The solid-state detector response function is predominantly Gaussian.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:sole-gaussian
+    how: quote
+- id: xfm:a/escape_geometry
+  name: escape-peak geometry
+  statement: Normal incidence on the detector; escape only from the front surface.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:sole-escape
+    how: quote
+- id: xfm:a/auger_neglected
+  name: non-radiative cascade approximated
+  statement: Auger transition ratios are neglected; acceptable because radiative transitions to the K shell dominate at practical L-line energies.
+  about: physics
+  support:
+  - field: statement
+    grit: q:sole-auger-crude
+    how: quote
+- id: xfm:a/no_overlap
+  name: well-resolved lines
+  statement: The energy window of each ROI contains one element's lines only.
+  about: physics
+  if_violated:
+  - xfm:f/roi_misattribution
+  support:
+  - field: statement
+    grit: q:pushie-fit-overlap
+    how: quote
+- id: xfm:a/detector_linear
+  name: detector linear at operating count rate
+  statement: Output count rate is linear in input count rate; no dead-time loss.
+  about: instrument
+  confirmable_by: OCR vs ICR correlation plot shows no curvature
+  if_violated:
+  - xfm:f/deadtime_loss
+  support:
+  - field: statement
+    grit: q:smak-dt-rare
+    how: quote
+  - field: confirmable_by
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:a/infinitely_thin
+  name: infinitely thin sample
+  statement: No attenuation of incident or fluorescent X-rays within the sample; no thickness correction.
+  about: sample
+  if_violated:
+  - xfm:f/matrix_effects
+  support:
+  - field: statement
+    grit: q:smak-thin
+    how: quote
+  - field: statement
+    grit: q:pushie-areal
+    how: quote
+- id: xfm:a/same_energy
+  name: same excitation energy as standard
+  statement: Calibration is valid only at the excitation energy at which the standard was measured.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:smak-energy
+    how: quote
+  - field: statement
+    grit: q:pushie-std-same-scan
+    how: quote
+- id: xfm:a/same_distance
+  name: same detector distance as standard
+  statement: Calibration is valid only at the detector distance at which the standard was measured.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:smak-distance
+    how: quote
+- id: xfm:a/same_gain
+  name: same I0 gain as standard (or recorded)
+  statement: I0 ion-chamber gain must match between standard and sample, or be recorded and corrected.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:smak-gain
+    how: quote
+- id: xfm:a/secondary_negligible
+  name: secondary fluorescence negligible
+  statement: Secondary (inter-element) fluorescence excitation is neglected in fundamental-parameter quantification.
+  about: physics
+  confirmable_by: standards or Monte Carlo estimate
+  support:
+  - field: statement
+    grit: q:sole-secondary
+    how: quote
+  - field: confirmable_by
+    grit: q:sole-secondary
+    how: quote
+- id: xfm:a/shared_loadings
+  name: shared loading matrix across samples
+  statement: Control and treatment share one component (loading) matrix; only scores differ.
+  about: model
+  support:
+  - field: statement
+    grit: q:pist-fa-shared
+    how: quote
+- id: xfm:a/variance_is_chemistry
+  name: variance marks chemical distinctness
+  statement: Greatest signal variation corresponds to chemically distinct regions.
+  about: statistics
+  support:
+  - field: statement
+    grit: q:smak-pca-assume
+    how: quote
+- id: xfm:a/fixed_peak_shape
+  name: fixed peak shape per pixel
+  statement: Per-pixel fits hold zero, gain, noise, Fano and pile-up fixed at configuration values; only line areas are free.
+  about: model
+  support:
+  - field: statement
+    grit: q:code-cfg-fixed
+    how: quote
+  - field: statement
+    grit: q:code-cfg-fixedzero
+    how: quote
+  - field: statement
+    grit: der:smak-fit-linear
+    how: derived
+- id: xfm:a/translation_only
+  name: misalignment is pure translation
+  statement: Images differ by a translation only; no rotation, scale or distortion.
+  about: instrument
+  support:
+  - field: statement
+    grit: q:code-stack-transl
+    how: quote
+  - field: statement
+    grit: der:stack-translation-only
+    how: derived
+preconditions:
+- id: xfm:pre/icr_ocr_available
+  name: ICR and OCR recorded per pixel
+  statement: Input and output count rates are stored per detector channel per pixel.
+  on_state: xfm:ds/mca_spectrum
+  checkable_by: metadata
+  support:
+  - field: statement
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:pre/i0_recorded
+  name: I0 recorded
+  statement: An incident-flux channel (I0STRM/I0/I1) exists in the map file.
+  on_state: xfm:ds/fitted_area_map
+  checkable_by: metadata
+  support:
+  - field: statement
+    grit: q:smak-i0-auto
+    how: quote
+- id: xfm:pre/standard_measured
+  name: standard measured under sample conditions
+  statement: A thin-film standard was scanned at the same energy, distance and gain as the sample.
+  on_state: xfm:ds/fitted_area_map
+  checkable_by: metadata
+  support:
+  - field: statement
+    grit: q:pushie-std-same-scan
+    how: quote
+- id: xfm:pre/common_grid
+  name: modalities on one pixel grid
+  statement: All channels to be analysed jointly are resampled to one pixel grid.
+  on_state: xfm:ds/registered_stack
+  checkable_by: data
+  established_by:
+  - xfm:t/optical_resize
+  - xfm:t/manual_registration
+decisions:
+- id: xfm:d/fit_vs_roi
+  name: fit or ROI-sum
+  question: Do fluorescence lines of the elements of interest overlap at the detector resolution?
+  has_rule: true
+  requires_human: false
+  resolved_by: inspection of the summed spectrum for overlapping lines
+  options:
+  - label: fit
+    selects_transformation: xfm:t/spectrum_fit
+    consequence: separates overlaps; introduces model dependence
+  - label: roi
+    selects_transformation: xfm:t/roi_summation
+    consequence: fast; misattributes counts if lines overlap
+  support:
+  - field: question
+    grit: der:fit-vs-roi-rule
+    how: derived
+  - field: has_rule
+    grit: q:sole-roi-fast
+    how: quote
+- id: xfm:d/deadtime
+  name: apply dead-time correction
+  question: Is the detector in the non-linear (saturated) regime at the count rates of this scan?
+  has_rule: true
+  requires_human: true
+  resolved_by: curvature in OCR vs ICR correlation plot
+  options:
+  - label: apply
+    selects_transformation: xfm:t/deadtime_correction
+    sets_parameter: xfm:p/tau
+  - label: skip
+    consequence: counts under-reported at high rates if assumption fails
+  support:
+  - field: question
+    grit: q:smak-dt-rule
+    how: quote
+  - field: resolved_by
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:d/quantify
+  name: relative or absolute
+  question: Is an absolute concentration needed, and is the sample thin enough (or its matrix known enough) to quantify?
+  has_rule: false
+  requires_human: true
+  options:
+  - label: relative only
+    consequence: claims limited to distribution and between-sample ratios
+  - label: ratio to thin-film standard
+    selects_transformation: xfm:t/quant_ratio_standard
+  - label: fundamental parameters
+    selects_transformation: xfm:t/quant_fp
+    sets_parameter: xfm:p/sample_composition
+  support:
+  - field: options
+    grit: q:pushie-ratio
+    how: quote
+  - field: options
+    grit: q:sole-fp-unknowns
+    how: quote
+- id: xfm:d/registration_mode
+  name: manual or automatic registration
+  question: Do rotation or detector-geometry distortions between modalities exceed what automatic alignment corrects?
+  has_rule: false
+  requires_human: true
+  options:
+  - label: manual
+    selects_transformation: xfm:t/manual_registration
+    sets_parameter: xfm:p/n_markers
+  - label: automatic
+    selects_transformation: xfm:t/stack_alignment
+  support:
+  - field: question
+    grit: q:pist-manual
+    how: quote
+  - field: options
+    grit: q:smak-stack-align
+    how: quote
+- id: xfm:d/norm_wavenumber
+  name: FTIR normalization wavenumber
+  question: Which wavenumber is a stable normalizer that does not overlap a band of interest?
+  has_rule: false
+  requires_human: true
+  resolved_by: repeat analysis with an alternative wavenumber and check results are unchanged
+  options:
+  - label: 1655 cm-1
+    sets_parameter: xfm:p/norm_wavenumber
+    sets_value: '1655'
+  - label: 2900 cm-1
+    sets_parameter: xfm:p/norm_wavenumber
+    sets_value: '2900'
+  support:
+  - field: resolved_by
+    grit: q:pist-norm-1655
+    how: quote
+validation_criteria:
+- id: xfm:v/edge_comparison
+  name: below/above-edge map comparison
+  statement: Fit an element with an interfering line at excitation energies below and above the interferer's edge; maps should agree.
+  observable: similarity of fitted maps at two excitation energies
+  support:
+  - field: statement
+    grit: q:sole-edge-validation
+    how: quote
+- id: xfm:v/ocr_icr_linearity
+  name: OCR vs ICR linearity
+  statement: OCR vs ICR correlation plot is linear.
+  observable: curvature of OCR vs ICR
+  threshold: no visible curvature
+  support:
+  - field: statement
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:v/registration_rmse
+  name: registration RMSE
+  statement: RMSE over reference markers after alignment.
+  observable: marker RMSE in pixels
+  threshold: 11 px reported; 8 px after removing sheared markers
+  derived_bound: co-localization interpretable only for features larger than ~80 µm
+  support:
+  - field: threshold
+    grit: q:pist-rmse
+    how: quote
+  - field: derived_bound
+    grit: der:reg-bound
+    how: derived
+  gaps:
+  - field: observable
+    kind: not_in_corpus
+    note: No RMSE computation exists in SMAK 3.0.11 source; the manuscript's RMSE was computed outside SMAK by means not stated.
+- id: xfm:v/norm_invariance
+  name: normalization invariance
+  statement: Spatial distributions unchanged when the normalization wavenumber is changed.
+  observable: agreement of band maps under 1655 vs 2900 cm-1 normalization
+  support:
+  - field: statement
+    grit: q:pist-norm-1655
+    how: quote
+- id: xfm:v/least_shear
+  name: least shear over marker sets
+  statement: Registration repeated with different marker sets; the set with least shear is kept.
+  observable: shear of the fitted transform
+  support:
+  - field: statement
+    grit: q:pist-repeat
+    how: quote
+failure_modes:
+- id: xfm:f/roi_misattribution
+  name: ROI misattribution under overlap
+  statement: Counts from a neighbouring element's line are attributed to the ROI element (e.g. K Kβ into Ca Kα).
+  caused_by:
+  - xfm:a/no_overlap
+  detected_by:
+  - xfm:v/edge_comparison
+  support:
+  - field: statement
+    grit: q:pushie-kkb-caka
+    how: quote
+- id: xfm:f/deadtime_loss
+  name: dead-time count loss
+  statement: At high input rates the detector under-counts; visible as pile-up peaks at double energy and OCR/ICR curvature.
+  caused_by:
+  - xfm:a/detector_linear
+  detected_by:
+  - xfm:v/ocr_icr_linearity
+  support:
+  - field: statement
+    grit: q:pushie-pileup
+    how: quote
+  - field: statement
+    grit: q:smak-dt-rule
+    how: quote
+- id: xfm:f/matrix_effects
+  name: matrix and thickness effects
+  statement: In thick or dense samples, incident penetration and fluorescence escape depend on the matrix; thin-sample quantification is biased.
+  caused_by:
+  - xfm:a/infinitely_thin
+  support:
+  - field: statement
+    grit: q:smak-matrix
+    how: quote
+transformations:
+- id: xfm:t/roi_summation
+  name: ROI summation
+  purpose: Produce a per-element map by summing counts in an energy window around the element's line.
+  consumes:
+  - xfm:ds/mca_spectrum
+  produces:
+  - xfm:ds/roi_map
+  adds_qualifiers:
+  - roi_summed
+  assumes:
+  - xfm:a/no_overlap
+  failure_modes:
+  - xfm:f/roi_misattribution
+  alternative_to:
+  - xfm:t/spectrum_fit
+  preserves:
+  - counting statistics
+  discards:
+  - spectral shape
+  introduces:
+  - window-placement dependence
+  justified_by: []
+  implemented_in:
+  - software: PyMca
+    component: ROI imaging
+    grit: q:sole-roi-fast
+  - software: XRF-Maps
+    component: src/fitting/routines/roi_fit_routine.cpp
+  support:
+  - field: purpose
+    grit: q:sole-roi-fast
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: '''fast and simple'' is stated; a rationale node was not created for a speed argument.'
+- id: xfm:t/spectrum_fit
+  name: per-pixel spectrum fitting
+  purpose: Separate overlapping fluorescence lines into per-element line areas by least-squares fitting of a physics-constrained peak model.
+  consumes:
+  - xfm:ds/mca_spectrum
+  produces:
+  - xfm:ds/fitted_area_map
+  adds_qualifiers:
+  - peak_fitted
+  parameters:
+  - xfm:p/merge_threshold
+  - xfm:p/snip_width
+  - xfm:p/hypermet_flag
+  assumes:
+  - xfm:a/gaussian_response
+  - xfm:a/escape_geometry
+  - xfm:a/auger_neglected
+  - xfm:a/fixed_peak_shape
+  justified_by:
+  - xfm:r/fit_over_roi
+  - xfm:r/global_calibration
+  validated_by:
+  - xfm:v/edge_comparison
+  alternative_to:
+  - xfm:t/roi_summation
+  preserves:
+  - total counts per element group
+  discards:
+  - per-channel counts
+  introduces:
+  - dependence on peak model and line-ratio tables
+  - fitted covariance
+  - 'unweighted linear fit (weight=None): fitted areas carry no Poisson weighting'
+  - SNIP background estimate (width 50) rather than fitted continuum
+  implemented_in:
+  - software: PyMca
+    component: batch fitting
+    grit: q:sole-edge-validation
+  - software: SMAK
+    version: 3.0.11
+    component: pyMcaFitWrapper.Wrapper.doFastFit -> PyMca FastXRFLinearFit.fitMultipleSpectra(weight=None, refit=True) with pyMcaConfigs/activePyMCAConfig.cfg
+    grit: q:code-fastfit
+  - software: XRF-Maps
+    component: src/fitting/routines/{nnls,svd,param_optimized,matrix_optimized,hybrid}_fit_routine.cpp
+    note: five routines; alternatives to each other, not yet modelled
+  support:
+  - field: purpose
+    grit: q:pist-fit
+    how: quote
+  - field: purpose
+    grit: q:sole-roi-fast
+    how: quote
+  - field: introduces
+    grit: q:code-fastfit-args
+    how: quote
+  - field: introduces
+    grit: q:code-cfg-snip
+    how: quote
+  - field: introduces
+    grit: q:code-cfg-strip
+    how: quote
+  - field: assumes
+    grit: der:smak-fit-linear
+    how: derived
+  conflicts:
+  - field: parameters
+    positions:
+    - statement: ZERO, GAIN, NOISE, FANO are fitted for the whole region, all peaks simultaneously.
+      grit: q:sole-global-params
+    - statement: SMAK practice unchecks Spectrometer Zero, Gain and Detector Width on the first small fit.
+      grit: inf:smak-calib-free
+    - statement: SMAK's shipped configuration fixes zero, gain, noise, fano and sum (all fixed* = 1), so the global non-linear optimisation is not performed unless the user unfixes them.
+      grit: q:code-cfg-fixed
+    would_settle: 'Settled for SMAK 3.0.11 by activePyMCAConfig.cfg: defaults fix all non-linear parameters. The method paper describes what PyMca can do; SMAK''s default does not do it. Remains a Conflict
+      between method-paper and manual/code tiers, not a contradiction.'
+- id: xfm:t/deadtime_correction
+  name: dead-time correction
+  purpose: Restore counts lost when the detector's input rate exceeds its throughput.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/fitted_area_map_dtc
+  adds_qualifiers:
+  - dead_time_corrected
+  parameters:
+  - xfm:p/tau
+  - xfm:p/dodt
+  requires:
+  - xfm:pre/icr_ocr_available
+  assumes: []
+  justified_by:
+  - xfm:r/dt_rarely_needed
+  validated_by:
+  - xfm:v/ocr_icr_linearity
+  failure_modes:
+  - xfm:f/deadtime_loss
+  preserves:
+  - spatial pattern
+  changes:
+  - absolute counts, rate-dependently
+  introduces:
+  - dependence on fitted tau
+  - 'no persisted record: correction is a view-time toggle'
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Process > Deadtime; applied at render/analysis time via dodt toggle (default off)
+    grit: q:code-dt-apply
+  support:
+  - field: purpose
+    grit: q:smak-dt-rule
+    how: quote
+  - field: governing_relation
+    grit: q:code-dt-model
+    how: quote
+  - field: governing_relation
+    grit: der:dt-paralyzable
+    how: derived
+  - field: introduces
+    grit: der:corrections-viewtime
+    how: derived
+  gaps: []
+  governing_relation: FF_corr = FF * exp(tau * 1e-6 * ICR)   (paralyzable model; tau in µs, ICR in counts/s)
+- id: xfm:t/flux_normalization
+  name: incident-flux normalization
+  purpose: Remove variation in incident beam intensity so maps are comparable within and between scans.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/normalized_map
+  adds_qualifiers:
+  - flux_normalized
+  requires:
+  - xfm:pre/i0_recorded
+  justified_by:
+  - xfm:r/i0_normalization
+  preserves:
+  - relative distribution
+  discards:
+  - absolute count scale
+  introduces:
+  - I0 channel noise
+  - no persisted record when applied as view-time toggle
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: doI0c toggle at render/analysis time (default off); Analyze > Set I0 Channel (prefers I0STRM)
+    grit: q:code-i0-divide
+  - software: SMAK
+    version: 3.0.11
+    component: inside Quantitative Analysis (divide by normalize channel)
+    grit: q:code-quant-divide
+  support:
+  - field: purpose
+    grit: q:pushie-i0
+    how: quote
+  - field: implemented_in
+    grit: q:code-i0-prefer
+    how: quote
+  - field: introduces
+    grit: der:corrections-viewtime
+    how: derived
+  parameters:
+  - xfm:p/doI0c
+- id: xfm:t/gaussian_smoothing
+  name: Gaussian smoothing
+  purpose: Suppress pixel-level noise in element maps before display and multivariate analysis.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/smoothed_map
+  adds_qualifiers:
+  - smoothed
+  parameters:
+  - xfm:p/blur_size
+  - xfm:p/blur_sigma
+  justified_by: []
+  preserves:
+  - total counts approximately
+  changes:
+  - spatial resolution
+  discards:
+  - sub-kernel features
+  introduces:
+  - spatial correlation between pixels
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Process > Advanced Filtering > Blur
+    grit: q:smak-blur-size
+  support:
+  - field: purpose
+    grit: q:pist-blur
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: Neither the trace nor the SMAK Basics extraction states why blurring is applied.
+    search_grit: abs:smak-blur-why
+- id: xfm:t/group_scaling
+  name: element-group intensity scaling
+  purpose: Scale intensity ranges by element group so maps of very different abundance can be compared across samples.
+  consumes:
+  - xfm:ds/smoothed_map
+  produces:
+  - xfm:ds/scaled_map
+  adds_qualifiers:
+  - scaled
+  justified_by:
+  - xfm:r/group_scaling
+  preserves:
+  - within-element distribution
+  discards:
+  - absolute counts
+  - between-group ratios
+  introduces:
+  - display-driven scale convention
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Map Math / display scaling
+    grit: q:pist-scaling
+  support:
+  - field: purpose
+    grit: q:pist-scaling
+    how: quote
+- id: xfm:t/quant_ratio_standard
+  name: quantification by linear calibration to thin-film standards
+  purpose: Convert flux-normalized line areas to areal concentration by ratio to a standard of known areal density measured under the same conditions.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/areal_concentration_map
+  adds_qualifiers:
+  - flux_normalized
+  - quantified_areal
+  parameters:
+  - xfm:p/std_conc
+  - xfm:p/i0_gain
+  requires:
+  - xfm:pre/standard_measured
+  - xfm:pre/i0_recorded
+  assumes:
+  - xfm:a/infinitely_thin
+  - xfm:a/same_energy
+  - xfm:a/same_distance
+  - xfm:a/same_gain
+  justified_by:
+  - xfm:r/i0_normalization
+  failure_modes:
+  - xfm:f/matrix_effects
+  alternative_to:
+  - xfm:t/quant_fp
+  governing_relation: C = slope * (A / I0) + intercept   (per element; slope, intercept from standards; reduces to a ratio when intercept = 0)
+  preserves:
+  - relative distribution
+  changes:
+  - units to ug/cm2
+  introduces:
+  - dependence on standard concentration and its uncertainty
+  - intercept term when more than one standard is used
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Analyze > Quantification > Quantitative Analysis
+    grit: q:smak-i0-auto
+  support:
+  - field: purpose
+    grit: q:pushie-ratio
+    how: quote
+  - field: governing_relation
+    grit: q:pushie-ratio
+    how: quote
+  - field: assumes
+    grit: q:smak-thin
+    how: quote
+  - field: assumes
+    grit: q:smak-semiquant
+    how: quote
+  - field: governing_relation
+    grit: q:code-quant-poly
+    how: quote
+  - field: governing_relation
+    grit: der:quant-linear-cal
+    how: derived
+  - field: governing_relation
+    grit: q:code-quant-divide
+    how: quote
+- id: xfm:t/quant_fp
+  name: fundamental-parameter quantification
+  purpose: Convert line areas to mass fractions using tabulated cross-sections, yields and the sample's own matrix attenuation.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/mass_fraction_map
+  adds_qualifiers:
+  - flux_normalized
+  - quantified_mass
+  parameters:
+  - xfm:p/sample_composition
+  assumes:
+  - xfm:a/secondary_negligible
+  justified_by: []
+  alternative_to:
+  - xfm:t/quant_ratio_standard
+  governing_relation: A = I0 * C * (Omega/4pi) * sum_j R_j^W  (Solé 2007 eq. 13), with R_j^W from the parallel-beam matrix expression (eq. 7)
+  preserves:
+  - relative distribution
+  changes:
+  - units to mass fraction
+  introduces:
+  - dependence on matrix composition, density, thickness and geometry
+  implemented_in:
+  - software: PyMca
+    component: fundamental parameters / matrix definition
+    grit: q:sole-parallel-beam
+  support:
+  - field: purpose
+    grit: q:sole-fp-unknowns
+    how: quote
+  - field: governing_relation
+    grit: q:sole-parallel-beam
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: Rationale for FP over standards is in the Handbook (not registered).
+- id: xfm:t/optical_stitch
+  name: optical mosaic stitching
+  purpose: Assemble beamline optical tiles into one image by feature matching rather than stage coordinates.
+  consumes:
+  - xfm:ds/optical_image
+  produces:
+  - xfm:ds/optical_image
+  justified_by: []
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: File > Covert SSRL Mosaic / vision stitching
+    grit: q:pist-stitch
+  support:
+  - field: purpose
+    grit: q:pist-stitch
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: '''rather than coordinates'' is stated without a reason.'
+- id: xfm:t/optical_resize
+  name: optical resample to XRF grid
+  purpose: Bring the optical image onto the XRF pixel grid so it can serve as the registration reference.
+  consumes:
+  - xfm:ds/optical_image
+  produces:
+  - xfm:ds/optical_on_xrf_grid
+  adds_qualifiers:
+  - resampled
+  justified_by:
+  - xfm:r/optical_resize
+  discards:
+  - optical resolution
+  preserves:
+  - sample outline
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: File > Export with Resize
+    grit: q:pist-resize
+  support:
+  - field: purpose
+    grit: q:pist-resize
+    how: quote
+- id: xfm:t/ftir_band_binning
+  name: FTIR band binning
+  purpose: Integrate preprocessed spectra over wavenumber windows assigned to plant-tissue components to produce per-band maps.
+  consumes:
+  - xfm:ds/ftir_spectrum_pre
+  produces:
+  - xfm:ds/ftir_band_map
+  adds_qualifiers:
+  - binned
+  justified_by: []
+  introduces:
+  - dependence on band assignments
+  support:
+  - field: purpose
+    grit: q:pist-norm-1655
+    how: quote
+    note: band list follows this sentence in the trace
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: Band assignments cite prior literature not registered.
+- id: xfm:t/manual_registration
+  name: manual landmark registration
+  purpose: Bring FTIR maps onto the XRF pixel grid by a thin-plate-spline warp fitted to operator-placed landmark pairs on the two optical images.
+  consumes:
+  - xfm:ds/optical_on_xrf_grid
+  - xfm:ds/ftir_band_map
+  - xfm:ds/scaled_map
+  produces:
+  - xfm:ds/registered_stack
+  adds_qualifiers:
+  - registered
+  parameters:
+  - xfm:p/n_markers
+  justified_by:
+  - xfm:r/manual_registration
+  validated_by:
+  - xfm:v/registration_rmse
+  - xfm:v/least_shear
+  alternative_to:
+  - xfm:t/stack_alignment
+  changes:
+  - FTIR pixel positions
+  introduces:
+  - registration error (RMSE) that bounds all downstream co-localization claims
+  - non-rigid (thin-plate spline) deformation of the moving image
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: ExportRegistrationClass -> utils.tps_warp2D on landmark pairs
+    grit: q:code-tps
+  support:
+  - field: purpose
+    grit: q:pist-markers
+    how: quote
+  - field: introduces
+    grit: der:reg-bound
+    how: derived
+  - field: introduces
+    grit: der:manual-tps
+    how: derived
+- id: xfm:t/stack_alignment
+  name: automatic stack alignment
+  purpose: Align channels from different maps by a single translation estimated by phase correlation on high-pass-filtered images.
+  consumes:
+  - xfm:ds/scaled_map
+  produces:
+  - xfm:ds/registered_stack
+  adds_qualifiers:
+  - registered
+  justified_by: []
+  alternative_to:
+  - xfm:t/manual_registration
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Process > Stack Alignment
+    grit: q:smak-stack-align
+  support:
+  - field: purpose
+    grit: q:smak-stack-align
+    how: quote
+  - field: purpose
+    grit: q:code-stack-phase
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+  assumes:
+  - xfm:a/translation_only
+- id: xfm:t/multifile_weighted_fa
+  name: multifile weighted factor analysis
+  purpose: Decompose the registered multimodal stacks of control and treatment jointly into shared components, so pixel-wise co-variation patterns can be compared between samples.
+  consumes:
+  - xfm:ds/registered_stack
+  produces:
+  - xfm:ds/fa_scores
+  - xfm:ds/fa_loadings
+  parameters:
+  - xfm:p/fa_weighting
+  requires:
+  - xfm:pre/common_grid
+  assumes:
+  - xfm:a/shared_loadings
+  - xfm:a/variance_is_chemistry
+  justified_by:
+  - xfm:r/fa_weighting
+  - xfm:r/pca_variance
+  preserves:
+  - total variance (all channels retained as components)
+  introduces:
+  - shared latent space; sign/scale indeterminacy of components
+  - 'sign convention: largest-magnitude loading positive'
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: WeightedGroupPCA.GroupPCA.doWtPCABalance (pcatype FA)
+    grit: q:code-fa-adj
+  support:
+  - field: purpose
+    grit: q:pist-fa-shared
+    how: quote
+  - field: assumes
+    grit: q:smak-pca-assume
+    how: quote
+    note: PCA assumption applied to FA by analogy
+  - field: governing_relation
+    grit: der:fa-weighting
+    how: derived
+  - field: governing_relation
+    grit: q:code-fa-adj
+    how: quote
+  - field: governing_relation
+    grit: q:code-fa-cycles
+    how: quote
+  gaps: []
+  governing_relation: n_g = (1/|g|) sum_{c in g} sum_k |L_kc};  w_g = max_g' n_g' / n_g;  channels in g scaled by w_g; re-estimate for 3 cycles; FA via sklearn.decomposition.FactorAnalysis; component sign
+    flipped so max|loading| > 0
+- id: xfm:t/component_effect_statistics
+  name: component effect statistics
+  purpose: Identify which shared components differ between control and treatment, by variance ratio and Cohen's d over component scores.
+  consumes:
+  - xfm:ds/fa_scores
+  produces:
+  - xfm:ds/claim_colocalization
+  justified_by: []
+  governing_relation: variance ratio = var_c(scores) / sum_c var_c(scores); Cohen's d = (mean_treat - mean_ctrl) / pooled SD
+  introduces:
+  - dependence on component sign and on pixel count as sample size
+  implemented_in:
+  - software: custom Python (NumPy/SciPy/tkinter)
+    component: variance ratio, Cohen's d
+    grit: q:pist-cohen
+  support:
+  - field: governing_relation
+    grit: q:pist-varratio
+    how: quote
+  - field: governing_relation
+    grit: q:pist-cohen
+    how: quote
+  gaps:
+  - field: assumes
+    kind: tacit
+    note: Treating pixels as independent samples for effect size is not discussed.
+- id: xfm:t/channel_component_correlation
+  name: channel-component correlation
+  purpose: Attribute each component to the measured channels that drive it, by Pearson correlation between channel maps and component scores.
+  consumes:
+  - xfm:ds/fa_scores
+  - xfm:ds/registered_stack
+  produces:
+  - xfm:ds/claim_colocalization
+  justified_by: []
+  implemented_in:
+  - software: custom Python (NumPy)
+    component: Pearson r heat map
+    grit: q:pist-pearson
+  support:
+  - field: purpose
+    grit: q:pist-pearson
+    how: quote
+- id: xfm:t/time_normalization
+  name: dwell-time normalization
+  purpose: Convert per-pixel counts to count rate by dividing by the recorded dwell time, removing stripe artifacts from stage acceleration at line starts.
+  consumes:
+  - xfm:ds/fitted_area_map
+  produces:
+  - xfm:ds/time_normalized_map
+  adds_qualifiers:
+  - time_normalized
+  justified_by: []
+  governing_relation: rate = counts / TIME * 80,000,000   (TIME in 80 MHz ticks)
+  preserves:
+  - relative distribution
+  changes:
+  - units to counts/s
+  discards:
+  - absolute counts
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: Map Math multiply by 0.0000125 (guide) / multi-channel time normalization (code)
+    grit: q:code-time-norm
+  support:
+  - field: purpose
+    grit: q:smak-time-artifact
+    how: quote
+  - field: governing_relation
+    grit: q:code-time-norm
+    how: quote
+  - field: governing_relation
+    grit: der:time-scalar
+    how: derived
+- id: xfm:t/ftir_atmospheric_correction
+  name: FTIR atmospheric correction
+  purpose: Remove water-vapour and CO2 absorption bands from each spectrum.
+  consumes:
+  - xfm:ds/ftir_spectrum
+  produces:
+  - xfm:ds/ftir_atm
+  adds_qualifiers:
+  - atmosphere_corrected
+  justified_by: []
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: IR_MathClass.DoNorm -> octavvs atm.atmospheric
+    grit: q:code-ir-atm
+  - software: Omnic
+    version: '9.8'
+    component: atmospheric correction
+    grit: q:pist-ftir-atm
+  support:
+  - field: purpose
+    grit: q:pist-ftir-atm
+    how: quote
+  - field: implemented_in
+    grit: der:ftir-steps-separate
+    how: derived
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+  - field: implemented_in
+    kind: contested
+    note: The trace attributes atmospheric correction to Omnic export; SMAK also implements it. Which ran is not stated.
+- id: xfm:t/ftir_rmies_correction
+  name: resonant Mie scattering correction
+  purpose: Separate the resonant-Mie scattering contribution from chemical absorbance using a reference spectrum, for samples with scattering morphology.
+  consumes:
+  - xfm:ds/ftir_atm
+  produces:
+  - xfm:ds/ftir_scatter_corrected
+  adds_qualifiers:
+  - scatter_corrected
+  parameters:
+  - xfm:p/mie_reference
+  justified_by: []
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: IR_MathClass.DoNorm -> octavvs mie.rmiesc
+    grit: q:code-ir-mie
+  support:
+  - field: purpose
+    grit: q:code-ir-mie
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+    note: Not used in the trace; offered by SMAK; rationale is in the OCTAVVS/RMieS literature, not registered.
+- id: xfm:t/ftir_sg_denoise
+  name: Savitzky-Golay denoising
+  purpose: Reduce high-frequency noise while preserving band shape and position.
+  consumes:
+  - xfm:ds/ftir_atm
+  produces:
+  - xfm:ds/ftir_denoised
+  adds_qualifiers:
+  - denoised
+  parameters:
+  - xfm:p/sg_window
+  - xfm:p/sg_order
+  justified_by:
+  - xfm:r/sg_denoise
+  discards:
+  - high-frequency content
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: IR_MathClass.DoNorm -> scipy.signal.savgol_filter
+    grit: q:code-ir-sg
+  support:
+  - field: purpose
+    grit: q:pist-ftir-atm
+    how: quote
+- id: xfm:t/ftir_rubberband_baseline
+  name: rubberband baseline correction
+  purpose: Remove the smooth scattering offset by subtracting the convex hull of each spectrum.
+  consumes:
+  - xfm:ds/ftir_denoised
+  produces:
+  - xfm:ds/ftir_baselined
+  adds_qualifiers:
+  - baseline_corrected
+  justified_by:
+  - xfm:r/rubberband
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: IR_MathClass.DoNorm -> octavvs baseline.rubberband (default 'Rubberband'; alternatives Concave Rubberband, AsLS, arPLS)
+    grit: q:code-ir-rubber
+  support:
+  - field: purpose
+    grit: q:pist-rubberband
+    how: quote
+  - field: implemented_in
+    grit: q:code-ir-defaults
+    how: quote
+- id: xfm:t/ftir_mean_normalization
+  name: mean normalization at a wavenumber
+  purpose: Scale each spectrum so intensities are comparable across pixels, using a chosen wavenumber as the normalizer.
+  consumes:
+  - xfm:ds/ftir_baselined
+  produces:
+  - xfm:ds/ftir_spectrum_pre
+  adds_qualifiers:
+  - mean_normalized
+  parameters:
+  - xfm:p/norm_wavenumber
+  justified_by: []
+  validated_by:
+  - xfm:v/norm_invariance
+  discards:
+  - absolute absorbance scale
+  introduces:
+  - dependence on normalizer band
+  implemented_in:
+  - software: SMAK
+    version: 3.0.11
+    component: IR_MathClass.DoNorm -> octavvs normalization.normalize_spectra (default 'Mean')
+    grit: q:code-ir-norm
+  support:
+  - field: purpose
+    grit: q:pist-norm-1655
+    how: quote
+  gaps:
+  - field: justified_by
+    kind: not_in_corpus
+goals:
+- id: xfm:g/relative_distribution
+  name: relative elemental distribution
+  statement: Map where each element is, comparably between control and treatment, without absolute concentrations.
+  claim_type: xfm:ds/claim_relative_distribution
+  support:
+  - field: statement
+    grit: q:pushie-i0
+    how: quote
+- id: xfm:g/colocalization
+  name: element–biomolecule co-localization under treatment
+  statement: Determine which elemental and biomolecular signals co-vary spatially and how that changes with salinity treatment.
+  claim_type: xfm:ds/claim_colocalization
+  validated_by:
+  - xfm:v/registration_rmse
+- id: xfm:g/absolute_concentration
+  name: absolute areal or mass concentration
+  statement: Report element concentration in ug/cm2 or mass fraction.
+  claim_type: xfm:ds/areal_concentration_map
+  support:
+  - field: statement
+    grit: q:pushie-areal
+    how: quote
+workflows:
+- id: xfm:w/pistachio_multimodal
+  name: pistachio multimodal XRF+FTIR workflow (as run)
+  serves:
+  - xfm:g/relative_distribution
+  - xfm:g/colocalization
+  starts_from:
+  - xfm:ds/mca_spectrum
+  - xfm:ds/ftir_spectrum
+  - xfm:ds/optical_image
+  ends_at:
+  - xfm:ds/claim_colocalization
+  validated_by:
+  - xfm:v/registration_rmse
+  - xfm:v/norm_invariance
+  steps:
+  - step_id: s1
+    transformation: xfm:t/spectrum_fit
+    condition: xfm:d/fit_vs_roi
+    condition_option: fit
+    role: conditional
+  - step_id: s2
+    transformation: xfm:t/deadtime_correction
+    preceded_by:
+    - s1
+    condition: xfm:d/deadtime
+    condition_option: apply
+    role: conditional
+  - step_id: s3
+    transformation: xfm:t/gaussian_smoothing
+    preceded_by:
+    - s1
+    parameter_values:
+    - parameter: xfm:p/blur_size
+      value: '5'
+      deviates_from_default: false
+    - parameter: xfm:p/blur_sigma
+      value: '0.75'
+      deviates_from_default: true
+  - step_id: s4
+    transformation: xfm:t/group_scaling
+    preceded_by:
+    - s3
+  - step_id: s5
+    transformation: xfm:t/optical_stitch
+  - step_id: s6
+    transformation: xfm:t/optical_resize
+    preceded_by:
+    - s5
+  - step_id: s7a
+    transformation: xfm:t/ftir_atmospheric_correction
+  - step_id: s7b
+    transformation: xfm:t/ftir_sg_denoise
+    preceded_by:
+    - s7a
+    parameter_values:
+    - parameter: xfm:p/sg_window
+      value: '9'
+    - parameter: xfm:p/sg_order
+      value: '3'
+  - step_id: s7c
+    transformation: xfm:t/ftir_rubberband_baseline
+    preceded_by:
+    - s7b
+  - step_id: s7d
+    transformation: xfm:t/ftir_mean_normalization
+    preceded_by:
+    - s7c
+    parameter_values:
+    - parameter: xfm:p/norm_wavenumber
+      value: '1655'
+  - step_id: s7v
+    transformation: xfm:t/ftir_mean_normalization
+    preceded_by:
+    - s7c
+    role: validation
+    condition: xfm:d/norm_wavenumber
+    condition_option: 2900 cm-1
+    parameter_values:
+    - parameter: xfm:p/norm_wavenumber
+      value: '2900'
+  - step_id: s8
+    transformation: xfm:t/ftir_band_binning
+    preceded_by:
+    - s7d
+  - step_id: s9
+    transformation: xfm:t/manual_registration
+    preceded_by:
+    - s4
+    - s6
+    - s8
+    condition: xfm:d/registration_mode
+    condition_option: manual
+    role: loop
+    loop_group: registration
+    loop_exit: xfm:v/least_shear
+    parameter_values:
+    - parameter: xfm:p/n_markers
+      value: up to 35
+  - step_id: s10
+    transformation: xfm:t/multifile_weighted_fa
+    preceded_by:
+    - s9
+  - step_id: s11
+    transformation: xfm:t/component_effect_statistics
+    preceded_by:
+    - s10
+  - step_id: s12
+    transformation: xfm:t/channel_component_correlation
+    preceded_by:
+    - s10
+  support:
+  - field: steps
+    grit: q:pist-fit
+    how: quote
+  - field: steps
+    grit: q:pist-repeat
+    how: quote
+  - field: steps
+    grit: der:ftir-steps-separate
+    how: derived
+  gaps:
+  - field: steps
+    kind: human_judgment
+    note: Dead-time correction (s2) and flux normalization are not stated in the trace; s2 is recorded as conditional with the trace's status inferred 'not applied' (inf:pist-deadtime-not-applied); flux
+      normalization status is unknown (inf:pist-i0-unknown) and is therefore not a step here.
+    search_grit: abs:pist-i0
+- id: xfm:w/absolute_quant_smak
+  name: absolute quantification via thin-film standard (not run)
+  serves:
+  - xfm:g/absolute_concentration
+  starts_from:
+  - xfm:ds/mca_spectrum
+  ends_at:
+  - xfm:ds/areal_concentration_map
+  steps:
+  - step_id: a1
+    transformation: xfm:t/spectrum_fit
+  - step_id: a2
+    transformation: xfm:t/quant_ratio_standard
+    preceded_by:
+    - a1
+    condition: xfm:d/quantify
+    condition_option: ratio to thin-film standard
+    role: conditional
+  alternative_to:
+  - xfm:w/absolute_quant_fp
+  support:
+  - field: steps
+    grit: q:smak-i0-auto
+    how: quote
+- id: xfm:w/absolute_quant_fp
+  name: absolute quantification via fundamental parameters (not run)
+  serves:
+  - xfm:g/absolute_concentration
+  starts_from:
+  - xfm:ds/mca_spectrum
+  ends_at:
+  - xfm:ds/mass_fraction_map
+  steps:
+  - step_id: b1
+    transformation: xfm:t/spectrum_fit
+  - step_id: b2
+    transformation: xfm:t/quant_fp
+    preceded_by:
+    - b1
+    condition: xfm:d/quantify
+    condition_option: fundamental parameters
+    role: conditional
+  alternative_to:
+  - xfm:w/absolute_quant_smak
+  support:
+  - field: steps
+    grit: q:sole-fp-unknowns
+    how: quote

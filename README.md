@@ -1,4 +1,4 @@
-# xfm-gold 0.2.0 — gold graph for the pistachio XRF+FTIR workflow
+# xfm-gold 0.2.1 — gold graph for the pistachio XRF+FTIR workflow
 
 Hand-built, machine-checked. Two files carry the content; everything else reproduces or interrogates them.
 
@@ -62,6 +62,16 @@ The code tier was applied as an overlay in `build_gold.py` (search for "code-tie
 **FTIR granularity.** `IR_MathClass.DoNorm` applies atmospheric correction, an optional resonant-Mie (RMieS) correction with a reference spectrum, Savitzky-Golay, a selectable baseline (default Rubberband; Concave Rubberband, AsLS, arPLS available), and normalization (default Mean) as five separately switchable calls. The granularity rule now has code behind it: `ftir_preprocess` is split into four Transformations on the as-run path plus `ftir_rmies_correction` as an offered step the trace did not use. The workflow steps are s7a–s7d with s7v as the 2900 cm⁻¹ validation re-run of s7d. One new `contested` gap: the trace attributes atmospheric correction to Omnic export, SMAK implements it too, and which ran is not stated.
 
 Net: three gaps closed, four opened (all smaller), the Conflict settled for this version, five Transformations added, one split. The as-run workflow is now 16 steps.
+
+## graphdb/ — loaded and queried (0.2.1)
+
+`graphdb/load_plan.py` loads the plan and the bundle into a property graph — Kùzu (embedded) by default, Neo4j with `--neo4j bolt://host user pass`. Node labels are sciplan classes; Support, Gap, Conflict, Position, Implementation, Option, WorkflowStep and Term are materialised as nodes so evidence and aliases are traversable; grits and activities load beside them, so a claim field can be walked to its quote and its source hash (Q10). 463 nodes, 765 relationships for the gold graph.
+
+`graphdb/queries.py` runs nine queries on Kùzu; `graphdb/queries.cypher` is the same set in Neo4j-native form. `graphdb/results.txt` is the output.
+
+**Q1 is fixed.** AND-reachability is computed as a fixpoint: a Transformation fires only when every DataState it consumes is already reachable. Driven from Python, one Cypher per round (six rounds for the gold graph). The first run found a modelling error the simple-path version had hidden: from raw XRF spectra alone the co-localization claim was reachable, because `stack_alignment` was written as consuming only the XRF map while producing the multimodal registered stack. It now consumes both channel sets, and raw-spectra-alone reaches nine transformations and stops — the correct answer. The backward slice from the claim to the inputs carries seven assumptions.
+
+Two Kùzu-specific notes: 0.11 cannot bind list parameters inside `all(x IN … WHERE x IN $list)`, so Q1 inlines list literals; and the database is a single file, so cleanup must remove a file, not a directory. Neither applies to Neo4j.
 
 ## Gap census
 

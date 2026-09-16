@@ -7,3 +7,5 @@ venv/
 .env.*
 !.env.example
 .DS_Store
+*.kuzu
+*.kuzu.wal

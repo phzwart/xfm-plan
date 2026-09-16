@@ -1,0 +1,59 @@
+Q1 paths raw spectra -> co-localization claim (NB: consumes is AND; simple paths treat it as OR — see README)
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'manual_registration', 'multifile_weighted_fa', 'component_effect_statistics'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'shared_loadings', 'variance_is_chemistry']
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'manual_registration', 'multifile_weighted_fa', 'channel_component_correlation'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'shared_loadings', 'variance_is_chemistry']
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'manual_registration', 'channel_component_correlation'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response']
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'stack_alignment', 'multifile_weighted_fa', 'component_effect_statistics'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'shared_loadings', 'translation_only', 'variance_is_chemistry']
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'stack_alignment', 'multifile_weighted_fa', 'channel_component_correlation'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'shared_loadings', 'translation_only', 'variance_is_chemistry']
+   ['spectrum_fit', 'gaussian_smoothing', 'group_scaling', 'stack_alignment', 'channel_component_correlation'] | assumes: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'translation_only']
+
+Q2 transformations introducing an external dependence
+   spectrum_fit -> ['dependence on peak model and line-ratio tables']
+   quant_ratio_standard -> ['dependence on standard concentration and its uncertainty', 'intercept term when more than one standard is used']
+   quant_fp -> ['dependence on matrix composition, density, thickness and geometry']
+   ftir_band_binning -> ['dependence on band assignments']
+
+Q3 which assumption, if violated, invalidates the most goals
+   gaussian_response 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   escape_geometry 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   auger_neglected 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   fixed_peak_shape 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   shared_loadings 2 ['colocalization', 'relative_distribution']
+   variance_is_chemistry 2 ['colocalization', 'relative_distribution']
+   infinitely_thin 1 ['absolute_concentration']
+   same_energy 1 ['absolute_concentration']
+   same_distance 1 ['absolute_concentration']
+   same_gain 1 ['absolute_concentration']
+   secondary_negligible 1 ['absolute_concentration']
+
+Q4 which steps carry uncertainty forward and which discard it
+   spectrum_fit ['counting'] -> ['fitted_covariance']
+   flux_normalization ['fitted_covariance'] -> ['propagated']
+   gaussian_smoothing ['fitted_covariance'] -> ['none']
+   quant_ratio_standard ['fitted_covariance'] -> ['propagated']
+   quant_fp ['fitted_covariance'] -> ['propagated']
+   manual_registration ['none'] -> ['empirical']
+   stack_alignment ['none'] -> ['empirical']
+   multifile_weighted_fa ['empirical'] -> ['none']
+   channel_component_correlation ['empirical', 'none'] -> ['none']
+   time_normalization ['fitted_covariance'] -> ['none']
+
+Q5 decisions: human-required and rule status
+   fit_vs_roi | human: False | rule: True | inspection of the summed spectrum for overlapping lines
+   deadtime | human: True | rule: True | curvature in OCR vs ICR correlation plot
+   quantify | human: True | rule: False | 
+   registration_mode | human: True | rule: False | 
+   norm_wavenumber | human: True | rule: False | repeat analysis with an alternative wavenumber and check results are unchanged
+
+Q6 which claims are bounded by a validation outcome, and by what
+   registration_rmse -> co-localization interpretable only for features larger than ~80 µm
+
+Q7 goals reachable only through a step with an inferred/unknown/absent support or an open gap
+   pistachio_multimodal serves ['colocalization', 'relative_distribution'] | steps with gaps: ['gaussian_smoothing', 'optical_stitch', 'ftir_atmospheric_correction', 'ftir_mean_normalization', 'ftir_mean_normalization', 'ftir_band_binning', 'component_effect_statistics']
+   absolute_quant_smak serves ['absolute_concentration'] | steps with gaps: []
+   absolute_quant_fp serves ['absolute_concentration'] | steps with gaps: ['quant_fp']
+
+Gap census
+   not_in_corpus 11 [('hypermet_flag', 'default_value'), ('registration_rmse', 'observable'), ('roi_summation', 'justified_by'), ('gaussian_smoothing', 'justified_by'), ('quant_fp', 'justified_by'), ('optical_stitch', 'justified_by'), ('ftir_band_binning', 'justified_by'), ('stack_alignment', 'justified_by'), ('ftir_atmospheric_correction', 'justified_by'), ('ftir_rmies_correction', 'justified_by'), ('ftir_mean_normalization', 'justified_by')]
+   tacit 1 [('component_effect_statistics', 'assumes')]
+   contested 1 [('ftir_atmospheric_correction', 'implemented_in')]
+   human_judgment 1 [('pistachio_multimodal', 'steps')]

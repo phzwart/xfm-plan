@@ -1,0 +1,85 @@
+Q1 AND-reachability: raw spectra + FTIR + optical -> co-localization claim
+  reachable: True | rounds: 8
+  fired: ['optical_stitch', 'optical_resize', 'roi_summation', 'ftir_atmospheric_correction', 'spectrum_fit', 'gaussian_smoothing', 'quant_ratio_standard', 'quant_fp', 'time_normalization', 'deadtime_correction', 'flux_normalization', 'ftir_rmies_correction', 'ftir_sg_denoise', 'group_scaling', 'ftir_rubberband_baseline', 'ftir_mean_normalization', 'ftir_band_binning', 'manual_registration', 'stack_alignment', 'multifile_weighted_fa', 'channel_component_correlation', 'component_effect_statistics']
+  backward slice: ['channel_component_correlation', 'component_effect_statistics', 'ftir_atmospheric_correction', 'ftir_band_binning', 'ftir_mean_normalization', 'ftir_rubberband_baseline', 'ftir_sg_denoise', 'gaussian_smoothing', 'group_scaling', 'manual_registration', 'multifile_weighted_fa', 'optical_resize', 'spectrum_fit', 'stack_alignment']
+  assumptions on slice: ['auger_neglected', 'escape_geometry', 'fixed_peak_shape', 'gaussian_response', 'shared_loadings', 'translation_only', 'variance_is_chemistry']
+Q1b AND-reachability from raw spectra ALONE -> co-localization claim
+  reachable: False | fired: ['spectrum_fit', 'roi_summation', 'gaussian_smoothing', 'quant_ratio_standard', 'quant_fp', 'time_normalization', 'deadtime_correction', 'flux_normalization', 'group_scaling']
+
+Q2 external dependence
+   spectrum_fit -> ["dependence on peak model and line-ratio tables", "fitted covariance", "unweighted linear fit (weight=None): fitted areas carry no Poisson weighting", "SNIP background estimate (width 50) rather than fitted continuum"]
+   deadtime_correction -> ["dependence on fitted tau", "no persisted record: correction is a view-time toggle"]
+   quant_ratio_standard -> ["dependence on standard concentration and its uncertainty", "intercept term when more than one standard is used"]
+   quant_fp -> ["dependence on matrix composition, density, thickness and geometry"]
+   ftir_band_binning -> ["dependence on band assignments"]
+
+Q3 assumption -> goals
+   auger_neglected 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   escape_geometry 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   fixed_peak_shape 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   gaussian_response 3 ['absolute_concentration', 'colocalization', 'relative_distribution']
+   shared_loadings 2 ['colocalization', 'relative_distribution']
+   variance_is_chemistry 2 ['colocalization', 'relative_distribution']
+   infinitely_thin 1 ['absolute_concentration']
+   same_distance 1 ['absolute_concentration']
+   same_energy 1 ['absolute_concentration']
+   same_gain 1 ['absolute_concentration']
+   secondary_negligible 1 ['absolute_concentration']
+
+Q4 uncertainty representation changes
+   spectrum_fit ['counting'] -> ['fitted_covariance']
+   gaussian_smoothing ['fitted_covariance'] -> ['none']
+   stack_alignment ['none'] -> ['empirical']
+   multifile_weighted_fa ['empirical'] -> ['none']
+   channel_component_correlation ['empirical', 'none'] -> ['none']
+   time_normalization ['fitted_covariance'] -> ['none']
+   flux_normalization ['fitted_covariance'] -> ['propagated']
+   quant_ratio_standard ['fitted_covariance'] -> ['propagated']
+   quant_fp ['fitted_covariance'] -> ['propagated']
+   manual_registration ['none'] -> ['empirical']
+
+Q5 decisions
+   deadtime | human: True | rule: True | selects: ['deadtime_correction']
+   fit_vs_roi | human: False | rule: True | selects: ['roi_summation', 'spectrum_fit']
+   quantify | human: True | rule: False | selects: ['quant_ratio_standard', 'quant_fp']
+   registration_mode | human: True | rule: False | selects: ['manual_registration', 'stack_alignment']
+   norm_wavenumber | human: True | rule: False | selects: []
+
+Q6 validation outcomes that bound claims
+   registration_rmse -> co-localization interpretable only for features larger than ~80 µm | validates: ['manual_registration', 'pistachio_multimodal', 'colocalization']
+
+Q7 goals through gapped / inferred steps
+   absolute_concentration via absolute_quant_smak | gaps: [] | inferred: []
+   absolute_concentration via absolute_quant_fp | gaps: ['quant_fp'] | inferred: []
+   colocalization via pistachio_multimodal | gaps: ['component_effect_statistics', 'ftir_atmospheric_correction', 'ftir_band_binning', 'ftir_mean_normalization', 'gaussian_smoothing', 'optical_stitch'] | inferred: []
+   relative_distribution via pistachio_multimodal | gaps: ['component_effect_statistics', 'ftir_atmospheric_correction', 'ftir_band_binning', 'ftir_mean_normalization', 'gaussian_smoothing', 'optical_stitch'] | inferred: []
+
+Q8 evidence audit (counts per transformation by grit kind)
+   channel_component_correlation {'quote': 1}
+   component_effect_statistics {'quote': 2}
+   deadtime_correction {'quote': 2, 'derived': 2}
+   flux_normalization {'quote': 2, 'derived': 1}
+   ftir_atmospheric_correction {'quote': 1, 'derived': 1}
+   ftir_band_binning {'quote': 1}
+   ftir_mean_normalization {'quote': 1}
+   ftir_rmies_correction {'quote': 1}
+   ftir_rubberband_baseline {'quote': 2}
+   ftir_sg_denoise {'quote': 1}
+   gaussian_smoothing {'quote': 1}
+   group_scaling {'quote': 1}
+   manual_registration {'quote': 1, 'derived': 2}
+   multifile_weighted_fa {'quote': 4, 'derived': 1}
+   optical_resize {'quote': 1}
+   optical_stitch {'quote': 1}
+   quant_fp {'quote': 2}
+   quant_ratio_standard {'quote': 6, 'derived': 1}
+   roi_summation {'quote': 1}
+   spectrum_fit {'quote': 5, 'derived': 1}
+   stack_alignment {'quote': 2}
+   time_normalization {'quote': 2, 'derived': 1}
+
+Q9 alias table
+   mca_spectrum <- [('MCA data', 'SMAK'), ('full spectrum', 'XRF-Maps'), ('MCA file', 'SMAK')]
+   roi_map <- [('binned map', 'Pushie 2022'), ('ROI', 'PyMca'), ('roi_fit_routine', 'XRF-Maps')]
+   fitted_area_map <- [('element map', 'pistachio V5'), ('fitted map', 'Solé 2007')]
+   areal_concentration_map <- [('Xx-conc1 channel', 'SMAK'), ('<chan>-<units>-<n> channel', 'SMAK 3.0.11 code')]

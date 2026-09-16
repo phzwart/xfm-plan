@@ -520,6 +520,7 @@ find("data_states","xfm:ds/areal_concentration_map")["aliases"].append(dict(term
 # registration
 t = T("xfm:t/stack_alignment")
 t["purpose"] = "Align channels from different maps by a single translation estimated by phase correlation on high-pass-filtered images."
+t["consumes"] = ["xfm:ds/scaled_map", "xfm:ds/ftir_band_map"]  # both channel sets; found by AND-reachability (Q1b)
 plan["assumptions"].append(dict(id="xfm:a/translation_only", name="misalignment is pure translation", statement="Images differ by a translation only; no rotation, scale or distortion.", about="instrument", support=[S("statement","q:code-stack-transl","quote"), S("statement","der:stack-translation-only","derived")]))
 t["assumes"] = ["xfm:a/translation_only"]; t["gaps"] = [g for g in t["gaps"] if g["field"] != "assumes"]
 t["support"] += [S("purpose","q:code-stack-phase","quote")]

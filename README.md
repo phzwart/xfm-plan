@@ -1,4 +1,4 @@
-# xfm-gold 0.2.1 — gold graph for the pistachio XRF+FTIR workflow
+# xfm-gold 0.2.2 — gold graph for the pistachio XRF+FTIR workflow
 
 Hand-built, machine-checked. Two files carry the content; everything else reproduces or interrogates them.
 
@@ -79,8 +79,15 @@ Two Kùzu-specific notes: 0.11 cannot bind list parameters inside `all(x IN … 
 
 ## Next
 
-1. Fix the reachability query to honour `consumes` as AND; re-run Q1.
-2. Load the bundle and the plan into Neo4j (n10s from the JSON-LD expansion, or a small loader from the YAML) and port the seven queries to Cypher.
-3. Register the raw SMAK HTML and re-hash.
-4. aims-leaf hook: express the pistachio run as `ExperimentRun` + `WorkflowRun` with `plan_step` → these Transformation IRIs.
-5. Gap-driven retrieval: the nine `not_in_corpus` gaps are the next corpus additions.
+1. Register the raw SMAK HTML and re-hash.
+2. Gap-driven retrieval: the eleven `not_in_corpus` gaps are the next corpus additions.
+
+AND-reachability and the Cypher port are in `graphdb/`; the aims-leaf hook is in `trace/`.
+
+## 0.2.2 — reasoning (graphdb/reason.py)
+
+Goal-directed planner over the plan graph: given a goal, the DataStates in hand, and facts (assumptions held true or false, preconditions, physical parameters available), it enumerates routes that reach any DataState satisfying the goal, treating `consumes` as a conjunction; blocks a route when a step assumes something false (naming the failure mode), lacks a required physical parameter, or cannot obtain an input; names the `alternative_to` step that would unlock a blocked route and what it needs; lists the decisions the route implies and the criteria that validate it. Four scenarios in `graphdb/reason_results.txt`.
+
+Running it changed the schema: sciplan 0.1.1 adds `Goal.satisfied_by` (multivalued DataState), because `absolute_concentration` was tied to one DataState and the FP route, which yields a mass fraction, was invisible as a way to meet the goal. The reasoner also needed a rule the graph already carried but no query used: a physical Parameter with no default must be supplied, or the step is blocked. With both, S1 (thick tissue, matrix unknown) correctly finds no route and says exactly what would unlock one; S2 (composition known) finds the FP route and lists the two decisions it implies.
+
+What the graph supports: reachability and planning over conjunctive inputs; assumption propagation to goals and failure modes; alternative-route discovery; decision enumeration; precondition and parameter availability; validation lookup; evidence-quality filtering; provenance walks. What it does not: numerical evaluation (governing relations are text), formal predicates linking assumptions to measurable sample or instrument properties (a human maps "thick" to `infinitely_thin: False`), probabilistic weighting, and anything requiring the qualifier vocabulary to be more than strings.

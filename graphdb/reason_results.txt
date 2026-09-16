@@ -1,0 +1,48 @@
+==============================================================================
+S1  Absolute concentration from a thick tissue section, matrix unknown, thin-film standard measured at the same energy/distance/gain
+  goal: absolute_concentration | have: ['mca_spectrum'] | facts: {'infinitely_thin': False, 'same_energy': True, 'same_distance': True, 'same_gain': True, 'std_conc': True, 'i0_gain': True, 'standard_measured': True, 'i0_recorded': True}
+  NO feasible route.
+  blocked (toward areal_concentration_map): spectrum_fit -> quant_ratio_standard
+     x quant_ratio_standard assumes infinitely_thin, which is false here -> failure mode matrix_effects
+     -> ALTERNATIVE quant_fp: needs parameters ['sample_composition']; assumes ['secondary_negligible']; produces ['mass_fraction_map']
+  blocked (toward mass_fraction_map): spectrum_fit -> quant_fp
+     x quant_fp needs physical parameter sample_composition (matrix for fundamental-parameter attenuation correction), not available
+==============================================================================
+S2  Same sample, but composition, density and thickness are now known
+  goal: absolute_concentration | have: ['mca_spectrum'] | facts: {'infinitely_thin': False, 'secondary_negligible': True, 'sample_composition': True, 'standard_measured': True, 'i0_recorded': True}
+  route 1 (yields mass_fraction_map): spectrum_fit -> quant_fp
+     decisions to take: [('fit_vs_roi', 'fit'), ('quantify', 'fundamental parameters')]
+     still unverified (route valid only if these hold):
+       - confirm auger_neglected (physics; no confirmation route stated) for spectrum_fit
+       - confirm escape_geometry (instrument; no confirmation route stated) for spectrum_fit
+       - confirm fixed_peak_shape (model; no confirmation route stated) for spectrum_fit
+       - confirm gaussian_response (instrument; no confirmation route stated) for spectrum_fit
+  blocked (toward areal_concentration_map): spectrum_fit -> quant_ratio_standard
+     x quant_ratio_standard assumes infinitely_thin, which is false here -> failure mode matrix_effects
+     x quant_ratio_standard needs physical parameter std_conc (known areal density of the thin-film standard), not available
+     x quant_ratio_standard needs physical parameter i0_gain (amplifier gain of the incident-flux ion chamber; must match between standard and sample), not available
+     -> ALTERNATIVE quant_fp: needs parameters ['sample_composition']; assumes ['secondary_negligible']; produces ['mass_fraction_map']
+==============================================================================
+S3  Co-localization claim, but only XRF spectra in hand (no FTIR, no optical)
+  goal: colocalization | have: ['mca_spectrum'] | facts: {}
+  NO feasible route.
+  blocked (toward claim_colocalization): spectrum_fit -> gaussian_smoothing -> group_scaling -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> stack_alignment -> multifile_weighted_fa -> component_effect_statistics
+     x no way to obtain ftir_spectrum
+  blocked (toward claim_colocalization): spectrum_fit -> gaussian_smoothing -> group_scaling -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> stack_alignment -> multifile_weighted_fa -> channel_component_correlation
+     x no way to obtain ftir_spectrum
+     x no way to obtain ftir_spectrum
+==============================================================================
+S4  Co-localization with all three inputs; detector known linear; sample rotated between modalities
+  goal: colocalization | have: ['mca_spectrum', 'ftir_spectrum', 'optical_image'] | facts: {'detector_linear': True, 'translation_only': False, 'gaussian_response': True, 'escape_geometry': True, 'auger_neglected': True, 'fixed_peak_shape': True}
+  route 1 (yields claim_colocalization): optical_resize -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> spectrum_fit -> gaussian_smoothing -> group_scaling -> manual_registration -> multifile_weighted_fa -> component_effect_statistics
+     decisions to take: [('fit_vs_roi', 'fit'), ('registration_mode', 'manual')]
+     still unverified (route valid only if these hold):
+       - confirm shared_loadings (model; no confirmation route stated) for multifile_weighted_fa
+       - confirm variance_is_chemistry (statistics; no confirmation route stated) for multifile_weighted_fa
+     validate by: ['registration_rmse']
+  route 2 (yields claim_colocalization): optical_resize -> ftir_atmospheric_correction -> ftir_sg_denoise -> ftir_rubberband_baseline -> ftir_mean_normalization -> ftir_band_binning -> spectrum_fit -> gaussian_smoothing -> group_scaling -> manual_registration -> multifile_weighted_fa -> channel_component_correlation
+     decisions to take: [('fit_vs_roi', 'fit'), ('registration_mode', 'manual')]
+     still unverified (route valid only if these hold):
+       - confirm shared_loadings (model; no confirmation route stated) for multifile_weighted_fa
+       - confirm variance_is_chemistry (statistics; no confirmation route stated) for multifile_weighted_fa
+     validate by: ['registration_rmse']

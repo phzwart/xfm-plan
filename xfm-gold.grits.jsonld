@@ -6,7 +6,7 @@
    "@type": "prov:Plan",
    "name": "xfm gold graph build",
    "prompt_digest": "b35dbed4dcedf50694091845d21b3c00a6269ff390af4997497b8c8e9e2bdfa2",
-   "schema_digest": "7b570432ddcf9dee2ebcea8ad811b4c572ce1654762dced5503d5d40d07fbef5",
+   "schema_digest": "a430406861230314687e062f490f1f4b14dfc8c6eadff122ed16df7b83f10986",
    "agent": "claude-fable-5-1 + P.H. Zwart (hand-built gold graph)"
   },
   {
@@ -2146,7 +2146,7 @@
    "payload": "https://phzwart.github.io/sciplan/schema/sciplan",
    "payload_ref": {
     "uri": "xfm-gold.plan.yaml",
-    "sha256": "a2dd514f4d1f0f9b2cf071d1875e2b0fe1ddb62a6ff495521e59fbcb67ab06f5",
+    "sha256": "b5fac23ec6918ae781cb4a811793ca84756b77a0410a706c9016ce8ac04bae24",
     "media_type": "application/yaml"
    }
   },

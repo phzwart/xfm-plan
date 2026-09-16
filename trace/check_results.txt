@@ -1,4 +1,4 @@
-plan xfm 0.2.0-gold workflow xfm:w/pistachio_multimodal | trace lambdaber:pistachio-multimodal-v5: 15 runs, 16 files
+plan xfm 0.2.2-gold workflow xfm:w/pistachio_multimodal | trace lambdaber:pistachio-multimodal-v5: 15 runs, 16 files
 
 40 checks passed
 

@@ -359,9 +359,9 @@ transformations=[
       support=[S("purpose","q:pist-pearson","quote")]),
 ],
 goals=[
- dict(id="xfm:g/relative_distribution", name="relative elemental distribution", statement="Map where each element is, comparably between control and treatment, without absolute concentrations.", claim_type="xfm:ds/claim_relative_distribution", support=[S("statement","q:pushie-i0","quote")]),
- dict(id="xfm:g/colocalization", name="element–biomolecule co-localization under treatment", statement="Determine which elemental and biomolecular signals co-vary spatially and how that changes with salinity treatment.", claim_type="xfm:ds/claim_colocalization", validated_by=["xfm:v/registration_rmse"]),
- dict(id="xfm:g/absolute_concentration", name="absolute areal or mass concentration", statement="Report element concentration in ug/cm2 or mass fraction.", claim_type="xfm:ds/areal_concentration_map", support=[S("statement","q:pushie-areal","quote")]),
+ dict(id="xfm:g/relative_distribution", name="relative elemental distribution", statement="Map where each element is, comparably between control and treatment, without absolute concentrations.", claim_type="xfm:ds/claim_relative_distribution", satisfied_by=["xfm:ds/claim_relative_distribution","xfm:ds/scaled_map","xfm:ds/normalized_map"], support=[S("statement","q:pushie-i0","quote")]),
+ dict(id="xfm:g/colocalization", name="element–biomolecule co-localization under treatment", statement="Determine which elemental and biomolecular signals co-vary spatially and how that changes with salinity treatment.", claim_type="xfm:ds/claim_colocalization", satisfied_by=["xfm:ds/claim_colocalization"], validated_by=["xfm:v/registration_rmse"]),
+ dict(id="xfm:g/absolute_concentration", name="absolute areal or mass concentration", statement="Report element concentration in ug/cm2 or mass fraction.", claim_type="xfm:ds/areal_concentration_map", satisfied_by=["xfm:ds/areal_concentration_map","xfm:ds/mass_fraction_map"], support=[S("statement","q:pushie-areal","quote"), S("satisfied_by","q:sole-fp-unknowns","quote")]),
 ],
 workflows=[
  dict(id="xfm:w/pistachio_multimodal", name="pistachio multimodal XRF+FTIR workflow (as run)", serves=["xfm:g/relative_distribution","xfm:g/colocalization"], starts_from=["xfm:ds/mca_spectrum","xfm:ds/ftir_spectrum","xfm:ds/optical_image"], ends_at=["xfm:ds/claim_colocalization"], validated_by=["xfm:v/registration_rmse","xfm:v/norm_invariance"],
@@ -581,7 +581,7 @@ steps[i7:i7+2] = [
 for s in steps:
     if s["step_id"] == "s8": s["preceded_by"] = ["s7d"]
 w["support"].append(S("steps","der:ftir-steps-separate","derived"))
-plan["version"] = "0.2.0-gold"
+plan["version"] = "0.2.2-gold"
 
 # ------------------------------------------------------------------ write, then link payload_ref
 plan_path = OUT / "xfm-gold.plan.yaml"

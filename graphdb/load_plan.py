@@ -13,6 +13,7 @@ REL_LISTS = {  # slot -> relationship type (list-valued refs)
     "validated_by": "VALIDATED_BY", "failure_modes": "HAS_FAILURE_MODE", "alternative_to": "ALTERNATIVE_TO",
     "serves": "SERVES", "starts_from": "STARTS_FROM", "ends_at": "ENDS_AT", "established_by": "ESTABLISHED_BY",
     "caused_by": "CAUSED_BY", "detected_by": "DETECTED_BY", "if_violated": "IF_VIOLATED", "bounded_by": "BOUNDED_BY",
+    "satisfied_by": "SATISFIED_BY",
 }
 REL_SCALARS = {"on_state": "ON_STATE", "set_by_decision": "SET_BY_DECISION", "claim_type": "CLAIM_TYPE"}
 KIND_LABEL = {"data_states": "DataState", "parameters": "Parameter", "transformations": "Transformation", "workflows": "Workflow",

@@ -1,5 +1,5 @@
 field: xfm
-version: 0.2.0-gold
+version: 0.2.2-gold
 data_states:
 - id: xfm:ds/mca_spectrum
   name: per-pixel MCA spectrum
@@ -1688,6 +1688,10 @@ goals:
   name: relative elemental distribution
   statement: Map where each element is, comparably between control and treatment, without absolute concentrations.
   claim_type: xfm:ds/claim_relative_distribution
+  satisfied_by:
+  - xfm:ds/claim_relative_distribution
+  - xfm:ds/scaled_map
+  - xfm:ds/normalized_map
   support:
   - field: statement
     grit: q:pushie-i0
@@ -1696,15 +1700,23 @@ goals:
   name: element–biomolecule co-localization under treatment
   statement: Determine which elemental and biomolecular signals co-vary spatially and how that changes with salinity treatment.
   claim_type: xfm:ds/claim_colocalization
+  satisfied_by:
+  - xfm:ds/claim_colocalization
   validated_by:
   - xfm:v/registration_rmse
 - id: xfm:g/absolute_concentration
   name: absolute areal or mass concentration
   statement: Report element concentration in ug/cm2 or mass fraction.
   claim_type: xfm:ds/areal_concentration_map
+  satisfied_by:
+  - xfm:ds/areal_concentration_map
+  - xfm:ds/mass_fraction_map
   support:
   - field: statement
     grit: q:pushie-areal
+    how: quote
+  - field: satisfied_by
+    grit: q:sole-fp-unknowns
     how: quote
 workflows:
 - id: xfm:w/pistachio_multimodal
